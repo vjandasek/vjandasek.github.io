@@ -1,0 +1,30 @@
+baseURL = 'http://localhost:1313/'
+languageCode = 'cz-CS'
+title = 'vjcz'
+theme = 'massively-mod'
+googleanalytics = ''
+disqusShortname = ''
+disableKinds = ['taxonomy', 'taxonomyTerm']
+defaultContentLanguage = 'cz'
+
+[params]
+  # set below parameter to define a favicon
+  favicon = '/favicon.ico'
+  # set to change date format
+  dateFormat = '2.1.2006'
+  backgroundPath = 'images/bg.jpg'
+  homeTitle = 'Home'
+
+# Below parameters can be set to override default post settings
+[params.posts]
+  folderName = 'post'
+  pageSize = '6'
+  featuredPost = 'true'
+  paginationPages = 2
+  showFirstLast = false
+
+[languages]
+[languages.cz]
+  languageName = 'Čeština'
+[languages.cz.params]
+  homeTitle = 'Úvod'

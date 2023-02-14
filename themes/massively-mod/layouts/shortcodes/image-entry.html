@@ -1,0 +1,7 @@
+{{ $img := $.Page.Resources.GetMatch (.Get "src")}}
+<li>
+  <a href="{{ ($img.Fit `1600x1600 q50`).Permalink }}" data-lightbox="{{ with .Get `gal` }}{{ . }}{{ else }}{{ `gal` }}{{
+    end }}" {{ with .Get `title` }} data-title="{{ . }}" {{ end }}>
+    <img src="{{ ($img.Fill `400x400 q50`).Permalink }}">
+  </a>
+</li>

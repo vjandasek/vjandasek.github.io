@@ -1,0 +1,11 @@
+<ul class="image-gallery">
+  {{ range .context.Resources }}
+  {{ if not (eq (index (split .Name ".") 1) "thu") }}
+  <li>
+    <a href="{{ (.Fit `1920x1920 q75`).Permalink }}" data-lightbox="gal">
+      <img src="{{ replace .Name `.` `.thu.` }}">
+    </a>
+  </li>
+  {{ end }}
+  {{ end }}
+</ul>

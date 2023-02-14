@@ -1,0 +1,11 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ with $data.intro }}
+<div id="intro">
+  <img src="images/signature.svg">
+  <p>
+    {{- range $i, $e := .description -}}
+    {{- if $i -}}<br />{{- end -}} {{- .line -}}
+    {{- end -}}
+  </p>
+</div>
+{{- end -}}

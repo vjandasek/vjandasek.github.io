@@ -1,0 +1,7 @@
+<div class="columns flex">
+  {{ range split .Inner "<--->" }}
+    <div class="markdown-nested flex-even">
+      {{ . | $.Page.RenderString }}
+    </div>
+    {{ end }}
+</div>

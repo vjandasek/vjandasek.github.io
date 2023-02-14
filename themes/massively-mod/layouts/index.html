@@ -1,0 +1,26 @@
+{{ partial "htmlhead" . }}
+
+<body lang='{{ .Site.Language.Lang | default "en-us" }}' class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper" class="fade-in">
+    {{- partial "intro.html" . -}}
+    {{- partial "header" . -}}
+    {{- partial "nav" . }}
+    <!-- Main -->
+    <div id="main">
+      <div class="content">
+        {{ .Content }}
+        {{- $paginator := .Paginator }}
+        {{- $outer := . }}
+        {{- partial "posts/pagination.html" (dict "paginator" $paginator "outer" $outer)}}
+      </div>
+    </div>
+    {{- partial "footer/index" . }}
+    {{- partial "copyright" . }}
+    <a href="#navPanel" id="navPanelToggle">{{ i18n "NAV_MENU" . }}</a>
+  </div>
+  {{- template "_internal/google_analytics.html" . }}
+  {{- partial "scripts/index" . }}
+</body>
+
+</html>

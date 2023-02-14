@@ -1,0 +1,13 @@
+items:
+- title: 'Doprava'
+  url: '/transport'
+- title: 'Wildlife'
+  url: '/wildlife'
+- title: 'Krajina'
+  url: '/landscape'
+- title: 'Analog'
+  url: '/analog'
+- title: 'Fotoblog'
+  url: '/blog'
+
+

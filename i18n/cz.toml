@@ -1,0 +1,36 @@
+[CONTACT_ADDRESS]
+  other = "Adresa"
+[CONTACT_EMAIL]
+  other = "E-mail"
+[CONTACT_FORM_FIELD_EMAIL]
+  other = "E-mail"
+[CONTACT_FORM_FIELD_MESSAGE]
+  other = "Zpráva"
+[CONTACT_FORM_FIELD_NAME]
+  other = "Jméno"
+[CONTACT_FORM_SUBMIT_SEND_MESSAGE]
+  other = "Odeslat zprávu"
+[CONTACT_PHONE]
+  other = "Telefon"
+[CONTACT_SOCIAL]
+  other = "Sociální sítě"
+[COPYRIGHT_MESSAGE_1]
+  other = "Design: [HTML5 UP](https://html5up.net)"
+[COPYRIGHT_MESSAGE_2]
+  other = "Založeno na portu pro Hugo: [curtiscode](https://curtiscode.dev)"
+[COPYRIGHT_MESSAGE_3]
+  other = "[lightbox galerie](https://lokeshdhakar.com/projects/lightbox2/)"
+[INTRO_CONTINUE]
+  other = "Pokračovat"
+[NAV_MENU]
+  other = "Menu"
+[NAV_CONTACT]
+  other = "Kontakt"
+[PAGINATION_NEXT]
+  other = "Další"
+[PAGINATION_PREVIOUS]
+  other = "Předchozí"
+[PAGINATION_FIRST]
+  other = "První"
+[PAGINATION_LAST]
+  other = "Poslední"
