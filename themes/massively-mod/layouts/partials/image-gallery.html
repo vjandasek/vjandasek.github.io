@@ -1,11 +1,14 @@
 <ul class="image-gallery">
+  {{ $resources := .context.Resources }}
   {{ range .context.Resources }}
-  {{ if not (eq (index (split .Name ".") 1) "thu") }}
-  <li>
-    <a href="{{ (.Fit `1920x1920 q75`).Permalink }}" data-lightbox="gal">
-      <img src="{{ replace .Name `.` `.thu.` }}">
-    </a>
-  </li>
-  {{ end }}
+    {{ $splitted := split .Name "." }}
+    {{ if eq (index $splitted 1) "thu" }}
+      <li>
+        {{ $fullres := $resources.GetMatch (print (index $splitted 0) `.` (index $splitted 2)) }}
+        <a href="{{ ($fullres.Fit `1920x1920 q75`).Permalink }}" data-lightbox="gal">
+          <img src="{{ (.Fit `400x400 q100`).Permalink }}">
+        </a>
+      </li>
+    {{ end }}
   {{ end }}
 </ul>
