@@ -255,7 +255,7 @@
     }
 
     // Position Lightbox
-    var top = $window.scrollTop() + this.options.positionFromTop;
+    var top = $window.scrollTop() + ($window.innerHeight() * 0.5);
     var left = $window.scrollLeft();
     this.$lightbox.css({
       top: top + 'px',
