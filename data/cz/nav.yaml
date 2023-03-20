@@ -5,9 +5,9 @@ items:
   url: '/wildlife'
 - title: 'Krajina'
   url: '/landscape'
+- title: 'Město'
+  url: '/cityscape'
 - title: 'Analog'
   url: '/analog'
 - title: 'Fotoblog'
   url: '/blog'
-
-
