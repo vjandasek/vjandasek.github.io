@@ -14,8 +14,9 @@
     {{ end }}
   </header>
   {{ if .Params.image }}
-  <a href="{{ .Permalink }}" class="image main"><img src="{{ print (path.Dir .Page.RelPermalink) `/` .Params.image }}"
-      alt="" /></a>
+  {{ $img := .Resources.GetMatch .Params.image }}
+
+  <a href="{{ .Permalink }}" class="image main"><img src="{{ ($img.Fit `1920x1920 q75`).Permalink }}" alt="" /></a>
   {{ end }}
   <ul class="actions">
     <li><a href="{{ .Permalink }}" class="button big">{{ $data.post.linktext }}</a></li>
