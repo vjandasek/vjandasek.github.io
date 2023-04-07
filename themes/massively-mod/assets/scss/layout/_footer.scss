@@ -21,10 +21,6 @@
   padding-left: 12.5%;
   padding-right: 12.5%;
 
-  .contact-form {
-    display: none;
-  }
-
   >section {
     @include vendor('flex-basis', '50%');
     @include vendor('flex-grow', '1');
@@ -111,6 +107,7 @@
   }
 
   input[type="text"],
+  input[type="email"],
   textarea {
     border-color: _palette(alt, fg);
   }
