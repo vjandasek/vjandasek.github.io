@@ -1,6 +1,6 @@
 baseURL = 'http://localhost:1313/'
 languageCode = 'cz-CS'
-title = 'vjcz'
+title = 'vjandasek'
 theme = 'massively-mod'
 googleanalytics = ''
 disqusShortname = ''
