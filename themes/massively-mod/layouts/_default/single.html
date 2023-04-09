@@ -8,27 +8,24 @@
     <!-- Main -->
     <div id="main">
       <!-- Post -->
-      <section class="post">
-        <header class="major">
-          {{ if not .Date.IsZero }}
-          <span class="date">{{ .Date.Format (.Site.Params.DateFormat | default "January 2, 2006") }}</span>
+      <div class="blog-content">
+        <section class="post">
+          <header class="major">
+            {{ if not .Date.IsZero }}
+            <span class="date">{{ .Date.Format (.Site.Params.DateFormat | default "January 2, 2006") }}</span>
+            {{ end }}
+            <h1>{{ .Title }}</h1>
+            <p>{{ .Description }}</p>
+          </header>
+
+          {{ .Content }}
+          {{ partial "postcustom" . }}
+          {{ if not (eq .Params.disableComments true) }}
+          {{ template "_internal/disqus.html" . }}
           {{ end }}
-          <h1>{{ .Title }}</h1>
-          <p>{{ .Description }}</p>
-        </header>
-        {{ if .Params.image }}
-        {{/* <div class="image main"><img
-            src="{{ print (path.Dir (path.Dir .Page.RelPermalink)) `/` .Params.image | relURL }}" alt="" /></div> */}}
-        {{ end }}
-        {{/* {{ partial "image-gallery" (dict "context" . ) }} */}}
-        {{ .Content }}
 
-        {{ partial "postcustom" . }}
-
-        {{ if not (eq .Params.disableComments true) }}
-        {{ template "_internal/disqus.html" . }}
-        {{ end }}
-      </section>
+        </section>
+      </div>
     </div>
     {{ partial "footer/index" . }}
     {{ partial "copyright" . }}

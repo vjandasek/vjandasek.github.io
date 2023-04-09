@@ -178,6 +178,26 @@
     }
   }
 
+  >.blog-content {
+    margin: auto !important;
+    width: 65%;
+
+    @include breakpoint('<=xlarge') {
+      margin: auto !important;
+      width: 75%;
+    }
+
+    @include breakpoint('<=large') {
+      margin: auto !important;
+      width: 85%;
+    }
+
+    @include breakpoint('<=medium') {
+      margin: auto !important;
+      width: 100%;
+    }
+  }
+
   @include color-button(invert);
 
   .button {
