@@ -1,6 +1,6 @@
 ---
 title: "Kowax Valašská rally 2023 v DOV"
-date: 2023-04-06T20:00:49+02:00
+date: 2023-04-09T08:00:00+02:00
 _build:
   publishResources: false
 image: images/30.jpg
