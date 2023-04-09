@@ -1,9 +1,13 @@
-{{ $img := $.Page.Resources.GetMatch (.Get "src")}}
+{{ $img := $.Page.Resources.GetMatch (.Get "src") }}
 {{ $imgName := strings.TrimSuffix ".jpg" $img.Name }}
 {{ $thu := ($.Page.Resources.GetMatch (print $imgName ".thu.jpg")) }}
+{{ $res := 400 }}
+{{ with .Get `res` }}{{ $res = mul $res (int .) }}{{ end }}
+{{ $res = print $res `x` $res ` q100` }}
+
 <li>
   <a href="{{ ($img.Fit `1920x1920 q75`).Permalink }}" data-lightbox="{{ with .Get `gal` }}{{ . }}{{ else }}{{ `gal` }}{{
     end }}" {{ with .Get `title` }} data-title="{{ . }}" {{ end }}>
-    <img src="{{ ($thu.Fill `400x400 q100`).Permalink }}">
+    <img src="{{ ($thu.Fit $res).Permalink }}">
   </a>
 </li>
