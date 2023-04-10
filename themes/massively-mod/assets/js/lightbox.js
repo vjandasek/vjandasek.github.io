@@ -154,6 +154,69 @@
       return false;
     });
 
+    var lb = this;
+    window.onresize = function () {
+      lb.changeImage(lb.currentImageIndex);
+    };
+
+    this.$lightbox.find('.lb-prev')[0].addEventListener('touchstart', function (event) {
+      if (event.touches.length == 1) {
+        touchstartX = event.changedTouches[0].screenX;
+        touchedMultiple = false;
+      } else {
+        touchedMultiple = true;
+      }
+    }, false);
+
+    this.$lightbox.find('.lb-prev')[0].addEventListener('touchend', function (event) {
+      if (event.touches.length == 0 && !touchedMultiple) {
+        touchendX = event.changedTouches[0].screenX;
+        handleGesture();
+      }
+    }, false);
+
+    this.$lightbox.find('.lb-next')[0].addEventListener('touchstart', function (event) {
+      if (event.touches.length == 1) {
+        touchstartX = event.changedTouches[0].screenX;
+        touchedMultiple = false;
+      } else {
+        touchedMultiple = true;
+      }
+    }, false);
+
+    this.$lightbox.find('.lb-next')[0].addEventListener('touchend', function (event) {
+      if (event.touches.length == 0 && !touchedMultiple) {
+        touchendX = event.changedTouches[0].screenX;
+        touchedMultiple = false;
+        handleGesture();
+      }
+    }, false);
+
+    function handleGesture() {
+      var THRESHOLD = 50;
+      console.log(Math.abs(touchstartX - touchendX));
+      if (Math.abs(touchstartX - touchendX) < THRESHOLD) {
+        return false;
+      }
+      if (touchendX < touchstartX) {
+        if (self.currentImageIndex === self.album.length - 1) {
+          self.changeImage(0);
+        } else {
+          self.changeImage(self.currentImageIndex + 1);
+        }
+        return false;
+      }
+
+      if (touchendX > touchstartX) {
+        if (self.currentImageIndex === 0) {
+          self.changeImage(self.album.length - 1);
+        } else {
+          self.changeImage(self.currentImageIndex - 1);
+        }
+        return false;
+      }
+    }
+
     this.$lightbox.find('.lb-prev').on('click', function () {
       if (self.currentImageIndex === 0) {
         self.changeImage(self.album.length - 1);
