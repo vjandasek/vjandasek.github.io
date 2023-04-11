@@ -3,7 +3,7 @@ body.lb-disable-scrolling {
 }
 
 .lightboxOverlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
@@ -11,10 +11,12 @@ body.lb-disable-scrolling {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
   display: none;
+  width: 100% !important;
+  height: 150% !important;
 }
 
 .lightbox {
-  position: absolute;
+  position: fixed;
   transform: translateY(-50%);
   left: 0;
   width: 100%;

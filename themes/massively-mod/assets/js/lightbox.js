@@ -154,11 +154,6 @@
       return false;
     });
 
-    var lb = this;
-    window.onresize = function () {
-      lb.changeImage(lb.currentImageIndex);
-    };
-
     this.$lightbox.find('.lb-prev')[0].addEventListener('touchstart', function (event) {
       if (event.touches.length == 1) {
         touchstartX = event.changedTouches[0].screenX;
@@ -194,7 +189,6 @@
 
     function handleGesture() {
       var THRESHOLD = 50;
-      console.log(Math.abs(touchstartX - touchendX));
       if (Math.abs(touchstartX - touchendX) < THRESHOLD) {
         return false;
       }
@@ -275,6 +269,17 @@
     var $window = $(window);
 
     $window.on('resize', $.proxy(this.sizeOverlay, this));
+    var lb = this;
+    window.onresize = function () {
+      lb.changeImage(lb.currentImageIndex);
+      var $window = $(window);
+      var top = $window.innerHeight() * 0.5;
+      var left = $window.scrollLeft();
+      lb.$lightbox.css({
+        top: top + 'px',
+        left: left + 'px'
+      });
+    };
 
     this.sizeOverlay();
 
@@ -318,7 +323,7 @@
     }
 
     // Position Lightbox
-    var top = $window.scrollTop() + ($window.innerHeight() * 0.5);
+    var top = $window.innerHeight() * 0.5;
     var left = $window.scrollLeft();
     this.$lightbox.css({
       top: top + 'px',
@@ -619,6 +624,7 @@
   Lightbox.prototype.end = function () {
     this.disableKeyboardNav();
     $(window).off('resize', this.sizeOverlay);
+    window.onresize = null;
     this.$lightbox.fadeOut(this.options.fadeDuration);
     this.$overlay.fadeOut(this.options.fadeDuration);
 
