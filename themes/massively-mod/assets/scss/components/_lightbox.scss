@@ -118,7 +118,8 @@ body.lb-disable-scrolling {
   transition-delay: 3s;
 }
 
-.lb-nav a.lb-prev:hover {
+.lb-nav a.lb-prev:hover,
+a.lb-prev.lb-touch {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
   -webkit-transition-delay: 0s;
@@ -144,7 +145,8 @@ body.lb-disable-scrolling {
   transition-delay: 3s;
 }
 
-.lb-nav a.lb-next:hover {
+.lb-nav a.lb-next:hover,
+a.lb-next.lb-touch {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
   -webkit-transition-delay: 0s;

@@ -515,6 +515,10 @@
     try {
       document.createEvent('TouchEvent');
       alwaysShowNav = (this.options.alwaysShowNavOnTouchDevices) ? true : false;
+      this.$lightbox.find('.lb-prev, .lb-next').addClass('lb-touch');
+      setTimeout(function () {
+        this.$lightbox.find('.lb-prev, .lb-next').removeClass('lb-touch');
+      }.bind(this), 10);
     } catch (e) { }
 
     this.$lightbox.find('.lb-nav').show();
