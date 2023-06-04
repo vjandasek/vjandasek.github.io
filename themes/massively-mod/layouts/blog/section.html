@@ -25,11 +25,6 @@
 
   <!-- Wrapper -->
   <div id="wrapper" class="fade-in" data-ps="{{ $postsPageSize }}" data-pfp="{{ $postsFeaturedPostEnabled }}">
-
-    {{- if eq $postsPaging.PageNumber 1 -}}
-    {{- partial "intro.html" . -}}
-    {{- end -}}
-
     {{- partial "header" . -}}
     {{- partial "nav" . }}
 
