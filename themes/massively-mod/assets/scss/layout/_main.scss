@@ -16,7 +16,6 @@
   z-index: 2;
 
   a {
-    color: _palette(invert, border) !important;
     margin-top: (_size(element-margin) * 0.5);
     margin-bottom: (_size(element-margin) * 0.5);
   }
@@ -107,7 +106,7 @@
       width: 100%;
     }
 
-    >.posts {
+    .posts {
       border-top: solid 2px;
       border-bottom: solid 2px;
       border-color: _palette(alt, fg) !important;

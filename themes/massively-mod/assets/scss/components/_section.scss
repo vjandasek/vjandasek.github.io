@@ -50,8 +50,11 @@ header {
   }
 
   &.major {
-    margin: 0 0 (_size(element-margin) * 2) 0;
     text-align: center;
+
+    > h1 {
+      margin-bottom: (_size(element-margin) * 2) !important;
+    }
 
     > :last-child {
       margin-bottom: 0;
