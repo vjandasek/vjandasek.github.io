@@ -1,0 +1,11 @@
+<div class="blog-info">
+  <ul>
+  {{ with .Param "tags" }}
+    <li>Kategorie:
+    {{ range $i, $e := . }}{{ if $i }},{{ end }}
+      <a href="/tags/{{ urlize $e }}">{{ $e }}</a>{{ end }}
+    </li>
+  {{ end }}
+  <li>{{.Date.Format (.Site.Params.DateFormat | default "January 2, 2006")}}&nbsp&nbsp</li>
+  </ul>
+</div>

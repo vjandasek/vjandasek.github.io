@@ -32,19 +32,50 @@
     <div id="main">
       <div class="content">
         {{ .Content }}
+        <div class="grid">
+          <div class="grid-main">
+            {{- if (eq $postsFeaturedPostEnabled true) }}
+            {{- partial "posts/featured.html" (dict "firstpost" $firstPost "siteData" (index .Site.Data
+            .Site.Language.Lang)) }}
+            {{- end }}
 
-        {{- if (eq $postsFeaturedPostEnabled true) }}
-        {{- partial "posts/featured.html" (dict "firstpost" $firstPost "siteData" (index .Site.Data
-        .Site.Language.Lang)) }}
-        {{- end }}
+            {{- if (not (and (eq (len $posts) 1) (eq $postsFeaturedPostEnabled true))) }}
+            {{- partial "posts/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
+            {{- end }}
 
-        {{- if (not (and (eq (len $posts) 1) (eq $postsFeaturedPostEnabled true))) }}
-        {{- partial "posts/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
-        {{- end }}
-
-        {{- $paginator := .Paginator }}
-        {{- $outer := . }}
-        {{- partial "posts/pagination.html" (dict "paginator" $paginator "outer" $outer)}}
+            {{- $paginator := .Paginator }}
+            {{- $outer := . }}
+            {{- partial "posts/pagination.html" (dict "paginator" $paginator "outer" $outer)}}
+          </div>
+          <div class="grid-search">
+            <link href="/css/pagefind.css" rel="stylesheet">
+            <script src="/pagefind/pagefind-ui.js"></script>
+            <div id="search"></div>
+            <script>
+                window.addEventListener('DOMContentLoaded', (event) => {
+                    new PagefindUI({ element: "#search",
+                          translations: {
+                              placeholder: "Hledat",
+                              clear_search: "\u00D7",
+                              load_more: "Načti více výsledků",
+                              search_label: "Hledej na této stránce",
+                              filters_label: "Filtry",
+                              zero_results: "Nenalezen žádný výsledek na dotaz [SEARCH_TERM]",
+                              many_results: "Na dotaz [SEARCH_TERM] bylo nalezeno [COUNT] výsledků",
+                              one_result: "Na dotaz [SEARCH_TERM] byl nalezen [COUNT] výsledek",
+                              alt_search: "Na dotaz [SEARCH_TERM] nebyl nalezen žádný výsledek. Místo toho zobrazuji výsledky pro [DIFFERENT_TERM]",
+                              search_suggestion: "Na dotaz [SEARCH_TERM] nebyl nalezen žádný výsledek. Zkus jeden z následujících dotazů:",
+                              searching: "Hledám výsledky pro dotaz [SEARCH_TERM]..."
+                          },
+                          showSubResults: false,
+                          "excerptLength": 20 });
+                });
+            </script>
+          </div>
+          <div class="grid-taxonomies">
+            {{ partial "taxonomylist" . }}
+          </div>
+        </div>
       </div>
     </div>
 

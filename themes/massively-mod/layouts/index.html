@@ -7,7 +7,7 @@
     {{- partial "header" . -}}
     {{- partial "nav" . }}
     <!-- Main -->
-    <div id="main">
+    <div id="main" data-pagefind-body>
       <div class="content">
         {{ .Content }}
         {{- $paginator := .Paginator }}

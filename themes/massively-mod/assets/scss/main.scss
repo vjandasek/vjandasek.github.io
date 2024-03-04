@@ -73,6 +73,9 @@ $backgroundPath: "{{ .Site.Params.backgroundPath | default " images/bg.jpg" }}";
 @import 'layout/main';
 @import 'layout/footer';
 @import 'layout/navPanel';
+@import 'layout/blog-info';
+@import 'layout/taxonomylist';
+@import 'layout/pagefind.css';
 
 
 // Hugo Theme specific

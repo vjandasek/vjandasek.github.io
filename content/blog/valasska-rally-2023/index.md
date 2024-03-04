@@ -4,6 +4,9 @@ date: 2023-04-09T08:00:00+02:00
 _build:
   publishResources: false
 image: images/30.jpg
+tags:
+- rally
+- auta
 ---
 
 {{< image-gal-start cols="3">}}

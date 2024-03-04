@@ -1,0 +1,7 @@
+<ul id="taxonomylist">
+<li>Kategorie</li>
+{{ range (index .Site.Taxonomies "tags").ByCount }}
+  <li><a href="/tags/{{ urlize .Term }}">{{ .Term }}</a></li>
+  {{/*  ({{ (len .Pages) }})  */}}
+{{ end }}
+</ul>

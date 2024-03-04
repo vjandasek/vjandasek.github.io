@@ -1,0 +1,43 @@
+ul#taxonomylist {
+  list-style: none;
+  padding: 1rem 0;
+
+  li {
+    line-height: 1.8;
+    font-size: x-small;
+    padding-left: 0;
+    overflow: hidden;
+
+    a {
+      margin: 0;
+    }
+  }
+
+  li:first-child {
+    font-size: x-large;
+    font-family: _font(family-heading);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  li:nth-child(n+2):nth-child(-n+3) {
+    font-size: xx-large;
+  }
+
+  li:nth-child(n+4):nth-child(-n+5) {
+    font-size: x-large;
+  }
+
+  li:nth-child(n+6):nth-child(-n+7) {
+    font-size: large;
+  }
+
+  li:nth-child(n+8):nth-child(-n+9) {
+    font-size: medium;
+  }
+
+  li:nth-child(n+10):nth-child(-n+11) {
+    font-size: small;
+  }
+}

@@ -1,0 +1,28 @@
+.blog-info {
+  @include vendor('display', 'flex');
+  @include vendor('flex-grow', '1');
+  @include vendor('flex-shrink', '1');
+
+  list-style: none;
+  margin-bottom: 0;
+  color: _palette(alt, fg);
+
+  ul {
+    @include vendor('display', 'flex');
+
+    padding-right: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+
+    li {
+      display: block;
+      padding: 0 0.4rem;
+      font-family: _font(family-heading);
+      font-weight: _font(weight);
+
+      a {
+        color: _palette(alt, fg) !important;
+      }
+    }
+  }
+}

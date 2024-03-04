@@ -4,7 +4,6 @@ title = 'vjandasek'
 theme = 'massively-mod'
 googleanalytics = ''
 disqusShortname = ''
-disableKinds = ['taxonomy', 'taxonomyTerm']
 defaultContentLanguage = 'cz'
 
 [params]

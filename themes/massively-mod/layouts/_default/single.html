@@ -6,18 +6,17 @@
     {{ partial "header" . }}
     {{ partial "nav" . }}
     <!-- Main -->
-    <div id="main">
+    <div id="main" data-pagefind-body>
       <!-- Post -->
       <div class="blog-content">
         <section class="post">
           <header class="major">
-            {{ if not .Date.IsZero }}
-            <span class="date">{{ .Date.Format (.Site.Params.DateFormat | default "January 2, 2006") }}</span>
-            {{ end }}
             <h1>{{ .Title }}</h1>
+            {{ if .Description }}
             <p>{{ .Description }}</p>
+            {{ end }}
+            {{ partial "blog-info" . }}
           </header>
-
           {{ .Content }}
           {{ partial "postcustom" . }}
           {{ if not (eq .Params.disableComments true) }}

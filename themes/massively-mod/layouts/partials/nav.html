@@ -7,7 +7,12 @@
         .Site.Params.homeTitle }}</a></li>
     {{- with $data.nav.items -}}
     {{- range $i, $e := . -}}
-    <li class="{{ if eq ($currentPage.RelPermalink) (print .url `/`) }}active{{end}}"><a
+    <li class="{{ if or (eq ($currentPage.RelPermalink) (print .url `/`))
+                        (and (hasPrefix (.url) (`/blog`))
+                             (or (hasPrefix ($currentPage.RelPermalink) (`/blog`))
+                             (hasPrefix ($currentPage.RelPermalink) (`/tags`)))
+                        )
+               }}active{{end}}"><a
         href='{{ .url | relLangURL }}'>{{- .title -}}</a></li>
     {{- end -}}
     {{- end -}}
