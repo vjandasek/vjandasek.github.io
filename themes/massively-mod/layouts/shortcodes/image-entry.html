@@ -2,8 +2,8 @@
 {{ $imgName := strings.TrimSuffix ".jpg" $img.Name }}
 {{ $thu := ($.Page.Resources.GetMatch (print $imgName ".thu.jpg")) }}
 {{ $res := 400 }}
-{{ with .Get "res" }}{{ $res = mul $res (int .) }}{{ end }}
-{{ $res = print $res `x` $res ` q100` }}
+{{ with .Get "res" }}{{ $res = mul $res (float .) }}{{ end }}
+{{ $res = print $res `x` $res ` q75` }}
 
 {{ if .Get "width" }}
   <li style="width: {{ .Get `width` }}">
