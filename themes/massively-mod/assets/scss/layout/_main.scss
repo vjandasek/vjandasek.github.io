@@ -120,21 +120,20 @@
 
       >article {
         border-color: _palette(alt, fg);
-        border-left-width: 2px;
+        border-right-width: 2px;
         border-style: solid;
-        border-top-width: 2px;
+        border-bottom-width: 2px;
         text-align: center;
 
-        > :last-child {
+        >:last-child {
           margin-bottom: 0;
         }
 
-        &:nth-child(2n - 1) {
-          border-left-width: 0;
+        &:nth-child(2n) {
+          border-right-width: 0;
         }
-
-        &:nth-child(-n + 2) {
-          border-top-width: 0;
+        &:last-child, &:nth-last-child(2):nth-child(odd) {
+          border-bottom-width: 0;
         }
       }
 

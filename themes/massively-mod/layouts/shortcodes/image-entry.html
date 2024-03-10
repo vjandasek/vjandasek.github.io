@@ -5,12 +5,7 @@
 {{ with .Get "res" }}{{ $res = mul $res (float .) }}{{ end }}
 {{ $res = print $res `x` $res ` q75` }}
 
-{{ if .Get "width" }}
-  <li style="width: {{ .Get `width` }}">
-{{ else }}
-  <li>
-{{ end }}
-
+<li>
   <a href="{{ ($img.Fit `1920x1920 q75`).Permalink }}" data-lightbox="{{ with .Get `gal` }}{{ . }}{{ else }}{{ `gal` }}{{
     end }}" {{ with .Get `title` }} data-title="{{ . }}" {{ end }}>
     <img src="{{ ($thu.Fit $res).Permalink }}">

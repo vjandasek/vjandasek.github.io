@@ -9,18 +9,22 @@ tags:
 - trail
 ---
 
-{{< image-gal-start cols="2">}}
-{{< image-entry src="images/01.jpg" title="" res="2" width="58.75%">}}
-{{< image-entry src="images/02.jpg" title="" res="2" width="39.25%">}}
-{{< image-entry src="images/03.jpg" title="" res="2" width="39.25%">}}
-{{< image-entry src="images/04.jpg" title="" res="2" width="58.75%">}}
+{{< image-gal-start cols="2" columns="3fr 2fr">}}
+{{< image-entry src="images/01.jpg" title="" res="2">}}
+{{< image-entry src="images/02.jpg" title="" res="2">}}
+{{< image-gal-end >}}
+{{< image-gal-start cols="2" columns="2fr 3fr">}}
+{{< image-entry src="images/03.jpg" title="" res="2">}}
+{{< image-entry src="images/04.jpg" title="" res="2">}}
 {{< image-gal-end >}}
 
 S Richardem, kamarádem, kolegou, sportovcem a spolupachatelem různých pošahaností v jedné osobě, jsme se před nějakým časem domluvili na focení na kole. Vlivem všemožných okolnosti, hromady volnočasových aktivit a nevhodného počasí jsme se od slov k činům dostali až nyní. Časování to ovšem bylo velmi příhodné, oba jsme nedávno oslavili narozeniny - já jsem se obdaroval novým foťákem, který bylo potřeba řádně otestovat a Richard dostal za odměnu pár fotek.
 
-{{< image-gal-start cols="2">}}
+{{< image-gal-start cols="2" columns="3fr 2fr">}}
 {{< image-entry src="images/05.jpg" title="" res="2" width="58.75%">}}
 {{< image-entry src="images/06.jpg" title="" res="2" width="39.25%">}}
+{{< image-gal-end >}}
+{{< image-gal-start cols="2" columns="2fr 3fr">}}
 {{< image-entry src="images/07.jpg" title="" res="2" width="39.25%">}}
 {{< image-entry src="images/08.jpg" title="" res="2" width="58.75%">}}
 {{< image-gal-end >}}
@@ -37,7 +41,6 @@ Přestože byla situace ke konci focení už docela napjatá vlivem jak mé úna
 {{< image-entry src="images/10.jpg" title="" res="2">}}
 {{< image-entry src="images/11.jpg" title="" res="2">}}
 {{< image-gal-end >}}
-
 {{< image-gal-start cols="2">}}
 {{< image-entry src="images/12.jpg" title="" res="2">}}
 {{< image-entry src="images/13.jpg" title="" res="2">}}

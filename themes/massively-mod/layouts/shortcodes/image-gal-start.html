@@ -1,1 +1,1 @@
-<ul class="image-gallery{{ with .Get `cols` }}{{ print ` image-gallery-` . }}{{ end }}">
+<ul class="image-gallery{{ with .Get `cols` }}{{ print ` image-gallery-` . }}{{ end }}" {{ with .Get `columns` }} style="--columns: {{ . }}"{{.}}{{ end }}>
