@@ -15,7 +15,6 @@
   </header>
   {{ if .Params.image }}
   {{ $img := .Resources.GetMatch .Params.image }}
-
   <a href="{{ .Permalink }}" class="image main"><img src="{{ ($img.Fit `1920x1920 q75`).Permalink }}" alt="" /></a>
   {{ end }}
   <ul class="actions">

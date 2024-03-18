@@ -5,6 +5,7 @@ theme = 'massively-mod'
 googleanalytics = ''
 disqusShortname = ''
 defaultContentLanguage = 'cz'
+summaryLength = 50
 
 [params]
   # set below parameter to define a favicon
