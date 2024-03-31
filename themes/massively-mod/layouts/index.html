@@ -12,7 +12,6 @@
         {{ .Content }}
         {{- $paginator := .Paginator }}
         {{- $outer := . }}
-        {{- partial "posts/pagination.html" (dict "paginator" $paginator "outer" $outer)}}
       </div>
     </div>
     {{- partial "footer/index" . }}
