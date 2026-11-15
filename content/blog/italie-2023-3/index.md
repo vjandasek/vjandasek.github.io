@@ -12,7 +12,7 @@ tags:
 ---
 
 {{< image-gal-start cols="1">}}
-{{< image-entry src="images/49.jpg" title="Přístav La Spezia v noce" res="3">}}
+{{< image-entry src="images/49.jpg" title="Přístav La Spezia v noci" res="3">}}
 {{< image-gal-end >}}
 Poslední část dovolené jsme strávili u moře. Kdo by si ovšem představoval flákání se na pláži, ten nás nezná, neboť to není nic pro nás - okoupání v moři je potřeba si zasloužit nějakou túrou. Jakožto "základnu" jsme si zvolili ligurské město La Spezia, které sice nic moc nenabízí, ale je velice výhodným východištěm známé italské oblasti Cinque Terre - pět starobylých barevných městeček na strmých březích moře.
 
