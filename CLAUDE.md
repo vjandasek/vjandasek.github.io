@@ -1,0 +1,60 @@
+# vjandasek.cz — personal photography site
+
+Hugo static site for Vít Jandásek's photography (galleries + photo blog). Content is in **Czech**.
+Live at https://vjandasek.cz (custom domain on GitHub Pages; `vjandasek.github.io` redirects there).
+
+## Stack
+
+- **Hugo** — CI pins `HUGO_VERSION` and `DART_SASS_VERSION` in `.github/workflows/hugo.yaml`. Keep the local versions the same as CI (local Hugo comes from `go install`; the Ubuntu apt package is far older).
+- **Dart Sass** — required: Hugo 0.170 dropped LibSass and calls an external `sass` binary. Locally it lives in `~/.local/dart-sass` (on PATH via `~/.bashrc`). The npm `sass` and Ruby Sass don't work with Hugo.
+- **Theme**: `themes/massively-mod/` — an in-repo, heavily modified fork of the Hugo port of HTML5 UP "Massively". Not a submodule; edit it directly.
+  - SCSS compiled by Hugo (`toCSS`, Dart Sass) from `assets/scss/main.scss`. Expect a heap of Sass deprecation warnings (`@import`, slash division, global colour functions): harmless for now. Some theme files use CRLF line endings.
+  - Palette mixes that land on fractional colour channels are written out as literal hex in `libs/_vars.scss`, so Dart Sass output matches the old LibSass output.
+  - JS: jQuery + HTML5 UP helpers + lightbox2, concatenated in `layouts/partials/scripts/index.html`.
+- **Pagefind** for search — runs in CI after the Hugo build (`npx pagefind --site public`). Search UI lives in `layouts/blog/section.html`; it won't work under plain `hugo server`.
+- **GoatCounter** analytics and Font Awesome kit in `layouts/partials/htmlhead-custom.html`. Don't put extra dots in template names: Hugo ≥0.146 treats `name.variant.html` as a variant of `name.html`.
+- Post-list teasers come from `layouts/partials/posts/summary.html` (plain text, first 50 words to end of sentence), not `.Summary`, which since Hugo 0.134 drags in gallery HTML.
+- Contact form posts to **Formspree** (`data/cz/contactinfo.yaml`).
+- Deploy: push to `master` → GitHub Actions builds and deploys to Pages.
+
+## Commands
+
+```bash
+hugo server                     # local dev at http://localhost:1313
+hugo --gc --minify              # production build into public/
+npx pagefind --site public --serve   # build search index + serve public/ to test search
+```
+
+No tests or linters; verify changes by building and looking at the pages.
+
+## Layout of the repo
+
+- `config/_default/config.toml` — main config; `config/production/config.toml` overrides `baseURL` (CI passes `--baseURL` anyway).
+- `data/cz/*.yaml` — nav menu, intro text, social links, contact info.
+- `i18n/cz.toml` — UI strings.
+- `content/` — every page is a **page bundle** (`index.md` + images alongside or in `images/`).
+  - Gallery sections (`transport`, `wildlife`, `landscape`, `cityscape`, `analog`) use `layout: "single_photos"`, which auto-renders every `*.thu.*` resource as a thumbnail linked to its full-size sibling.
+  - Blog posts live in `content/blog/<slug>/index.md` with `image:` (cover), `tags:`, and images in `images/`.
+  - Pages set `_build: publishResources: false` so only Hugo-processed images are published, never raw files.
+
+## Image conventions
+
+- Every photo `foo.jpg` needs a hand-made thumbnail `foo.thu.jpg` next to it (often a deliberate crop). The `image-entry` shortcode and the gallery partial fail without it.
+- Full-size images are exported at roughly 1800–1920 px and re-processed by Hugo (`Fit 1920x1920 q75`).
+- Zoner Photo Studio leaves `*.data-zps` sidecar files — don't commit them.
+
+Blog post gallery shortcodes:
+
+```
+{{< image-gal-start cols="2" columns="2fr 4fr" >}}   <!-- cols = column count, columns = CSS grid fractions -->
+{{< image-entry src="images/50.jpg" title="Caption" res="2" >}}  <!-- res multiplies the 400px thumbnail size; gal = lightbox group -->
+{{< image-gal-end >}}
+```
+
+Two-column text/image block: `{{< columns >}} left <---> right {{< /columns >}}`.
+
+## Conventions
+
+- Commit messages: `Area: short description`, e.g. `Blog: Italie 2023 (3)`, `Gallery: …`, `General: …`, `Deploy: …`, `Development: …`.
+- Generated folders (`public/`, `resources/`, `node_modules/`) are git-ignored.
+- `pubcrank.yml` describes editable content/fields for an external CMS editor.
