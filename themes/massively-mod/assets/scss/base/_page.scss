@@ -1,3 +1,5 @@
+@use '../libs' as *;
+
 ///
 /// Massively by HTML5 UP
 /// html5up.net | @ajlkn
@@ -39,7 +41,7 @@ html {
 
 body {
 
-  background-color: _palette(invert, bg);
+  background-color: palette(invert, bg);
 
   // Stops initial animations until page loads.
   &.is-preload {

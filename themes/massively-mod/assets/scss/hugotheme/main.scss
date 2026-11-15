@@ -1,9 +1,13 @@
+@use "hugo:vars" as hugo;
+
+@use '../libs' as *;
+
 img {
   max-width: 100%;
 }
 
 #wrapper {
   >.bg {
-    background-image: url('../../images/overlay.png'), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../" + $backgroundPath);
+    background-image: url('../../images/overlay.png'), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../" + hugo.$backgroundPath);
   }
 }

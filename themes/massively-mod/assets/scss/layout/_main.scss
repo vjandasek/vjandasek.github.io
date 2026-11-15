@@ -1,3 +1,7 @@
+@use '../libs' as *;
+@use '../base/typography' as *;
+@use '../components/button' as *;
+
 ///
 /// Massively by HTML5 UP
 /// html5up.net | @ajlkn
@@ -7,7 +11,7 @@
 /* Main */
 
 #main {
-  background-color: _palette(invert, bg);
+  background-color: palette(invert, bg);
   @include color-typography(invert);
   position: relative;
   margin: 0 auto;
@@ -16,8 +20,8 @@
   z-index: 2;
 
   a {
-    margin-top: (_size(element-margin) * 0.5);
-    margin-bottom: (_size(element-margin) * 0.5);
+    margin-top: (size(element-margin) * 0.5);
+    margin-bottom: (size(element-margin) * 0.5);
   }
 
   p {
@@ -29,7 +33,7 @@
   }
 
   >* {
-    @include padding((_size(padding) * 2), (_size(padding) * 2));
+    @include padding((size(padding) * 2), (size(padding) * 2));
     margin: 0;
 
     &:first-child {
@@ -42,23 +46,23 @@
   }
 
   >.post {
-    @include padding((_size(padding) * 2), (_size(padding) * 4));
+    @include padding((size(padding) * 2), (size(padding) * 4));
 
     header {
 
       &.major {
-        margin-bottom: (_size(element-margin) * 0.5);
+        margin-bottom: (size(element-margin) * 0.5);
 
         >.date {
           margin-top: -2rem;
-          margin-bottom: (_size(element-margin) * 0.5);
+          margin-bottom: (size(element-margin) * 0.5);
         }
 
         >h1,
         h2 {
           font-size: 4rem;
           line-height: 1.1;
-          margin: 0 0 _size(element-margin) 0;
+          margin: 0 0 size(element-margin) 0;
         }
       }
     }
@@ -68,24 +72,24 @@
     }
 
     @include breakpoint('<=large') {
-      @include padding((_size(padding) * 3), (_size(padding) * 2));
+      @include padding((size(padding) * 3), (size(padding) * 2));
     }
 
     @include breakpoint('<=small') {
-      @include padding((_size(padding) * 2), (_size(padding) * 1));
+      @include padding((size(padding) * 2), (size(padding) * 1));
 
       header {
         &.major {
           >.date {
             margin-top: -1rem;
-            margin-bottom: _size(element-margin);
+            margin-bottom: size(element-margin);
           }
 
           >h1,
           h2 {
             font-size: 2.5rem;
             line-height: 1.2;
-            margin: 0 0 (_size(element-margin) * 0.75) 0;
+            margin: 0 0 (size(element-margin) * 0.75) 0;
           }
         }
       }
@@ -109,9 +113,9 @@
     .posts {
       border-top: solid 2px;
       border-bottom: solid 2px;
-      border-color: _palette(alt, fg) !important;
+      border-color: palette(alt, fg) !important;
       @include fixed-grid((columns: 2,
-          gutters: (_size(padding) * 2),
+          gutters: (size(padding) * 2),
           horizontal-align: center,
           vertical-align: flex-start,
           flush: false));
@@ -119,7 +123,7 @@
       padding: 0;
 
       >article {
-        border-color: _palette(alt, fg);
+        border-color: palette(alt, fg);
         border-right-width: 2px;
         border-style: solid;
         border-bottom-width: 2px;
@@ -139,13 +143,13 @@
 
       @include breakpoint('<=medium') {
         @include fixed-grid-resize((columns: 2,
-            gutters: (_size(padding) * 2.5),
+            gutters: (size(padding) * 2.5),
             flush: false));
       }
 
       @include breakpoint('<=small') {
         @include fixed-grid-resize((columns: 1,
-            gutters: (_size(padding) * 2),
+            gutters: (size(padding) * 2),
             prev-columns: 2,
             flush: false));
 
@@ -204,7 +208,7 @@
 
   @include breakpoint('<=small') {
     >* {
-      @include padding((_size(padding) * 1), (_size(padding) * 1));
+      @include padding((size(padding) * 1), (size(padding) * 1));
     }
   }
 

@@ -1,0 +1,8 @@
+// Everything the theme partials need from libs/, as one module.
+@forward 'vars';
+@forward 'functions';
+@forward 'mixins';
+@forward 'vendor' hide remove-nth; // identical copy also lives in functions
+@forward 'breakpoints';
+@forward 'html-grid';
+@forward 'fixed-grid';

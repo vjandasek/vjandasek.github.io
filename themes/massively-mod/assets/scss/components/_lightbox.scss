@@ -1,3 +1,5 @@
+@use '../libs' as *;
+
 body.lb-disable-scrolling {
   overflow: hidden;
 }

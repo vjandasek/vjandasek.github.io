@@ -8,7 +8,12 @@ Live at https://vjandasek.cz (custom domain on GitHub Pages; `vjandasek.github.i
 - **Hugo** — CI pins `HUGO_VERSION` and `DART_SASS_VERSION` in `.github/workflows/hugo.yaml`. Keep the local versions the same as CI (local Hugo comes from `go install`; the Ubuntu apt package is far older).
 - **Dart Sass** — required: Hugo 0.170 dropped LibSass and calls an external `sass` binary. Locally it lives in `~/.local/dart-sass` (on PATH via `~/.bashrc`). The npm `sass` and Ruby Sass don't work with Hugo.
 - **Theme**: `themes/massively-mod/` — an in-repo, heavily modified fork of the Hugo port of HTML5 UP "Massively". Not a submodule; edit it directly.
-  - SCSS compiled by Hugo (`toCSS`, Dart Sass) from `assets/scss/main.scss`. Expect a heap of Sass deprecation warnings (`@import`, slash division, global colour functions): harmless for now. Some theme files use CRLF line endings.
+  - SCSS compiled by Hugo (`css.Sass`, Dart Sass) from `assets/scss/main.scss` and `noscript.scss`, in `layouts/partials/htmlhead.html`. The build is warning-free; keep it that way.
+  - Uses the Sass **module system** (`@use`/`@forward`, no Sass `@import`). Partials load helpers with `@use '../libs' as *;` (`libs/_index.scss` forwards all of libs/). A layout file that borrows a `color-*` mixin must `@use` the partial that defines it.
+  - Helper functions are `palette()`, `size()`, `font()`, `duration()`, `misc()` — no leading underscore (that would make them module-private).
+  - Breakpoints are the default `$breakpoints` in `libs/_breakpoints.scss`.
+  - Site config reaches Sass via `css.Sass` `vars` → `@use "hugo:vars"` (e.g. `backgroundPath` in `hugotheme/main.scss`). Don't put Go template syntax in SCSS files.
+  - Many theme files use CRLF line endings; keep each file's existing style.
   - Palette mixes that land on fractional colour channels are written out as literal hex in `libs/_vars.scss`, so Dart Sass output matches the old LibSass output.
   - JS: jQuery + HTML5 UP helpers + lightbox2, concatenated in `layouts/partials/scripts/index.html`.
 - **Pagefind** for search — runs in CI after the Hugo build (`npx pagefind --site public`). Search UI lives in `layouts/blog/section.html`; it won't work under plain `hugo server`.

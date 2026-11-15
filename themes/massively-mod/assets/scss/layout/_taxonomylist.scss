@@ -1,3 +1,5 @@
+@use '../libs' as *;
+
 ul#taxonomylist {
   list-style: none;
   padding: 1rem 0;
@@ -15,7 +17,7 @@ ul#taxonomylist {
 
   li:first-child {
     font-size: x-large;
-    font-family: _font(family-heading);
+    font-family: font(family-heading);
     font-weight: 900;
     margin-bottom: 1rem;
     text-transform: uppercase;

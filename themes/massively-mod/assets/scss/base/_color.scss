@@ -1,0 +1,20 @@
+@use 'typography' as *;
+@use '../components/box' as *;
+@use '../components/button' as *;
+@use '../components/form' as *;
+@use '../components/list' as *;
+@use '../components/section' as *;
+@use '../components/table' as *;
+@use '../components/pagination' as *;
+
+/// Applies every component's colour scheme for palette $p.
+@mixin color($p) {
+  @include color-typography($p);
+  @include color-box($p);
+  @include color-button($p);
+  @include color-form($p);
+  @include color-list($p);
+  @include color-section($p);
+  @include color-table($p);
+  @include color-pagination($p);
+}

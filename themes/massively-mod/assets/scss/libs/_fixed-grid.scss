@@ -8,6 +8,7 @@
 @use "sass:map";
 @use "sass:meta";
 @use "sass:math";
+@use 'vendor' as *;
 
 @mixin fixed-grid-base($vertical-align: null, $horizontal-align: null) {
 

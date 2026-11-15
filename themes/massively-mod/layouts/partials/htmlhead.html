@@ -12,20 +12,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- CSS -->
-  {{ if hugo.IsServer }}
-  {{ $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS (dict "targetPath"
-  "assets/css/main.css" "enableSourceMap" true) }}
-  <link rel="stylesheet" href="{{ ($style).RelPermalink }}">
-  {{ else }}
-  {{ $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS (dict "targetPath"
-  "assets/css/main.css" "enableSourceMap" false) }}
-  <link rel="stylesheet" href="{{ ($style | minify).RelPermalink }}">
-  {{ end }}
+  {{/* Values from site config, available in Sass via `@use "hugo:vars"` */}}
+  {{ $sassVars := dict "backgroundPath" (site.Params.backgroundPath | default "images/bg.jpg") }}
+  {{ $style := resources.Get "scss/main.scss" | css.Sass (dict "transpiler" "dartsass" "targetPath" "assets/css/main.css"
+  "enableSourceMap" hugo.IsServer "vars" $sassVars) }}
+  {{ if not hugo.IsServer }}{{ $style = $style | minify }}{{ end }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}">
   {{ with .Site.Params.favicon }}
   <link rel="shortcut icon" href="{{ . }}">
   {{ end }}
-  {{ $noscript := resources.Get "scss/noscript.scss" | resources.ExecuteAsTemplate "noscript.scss" . | toCSS (dict
-  "targetPath" "assets/css/noscript.css" "enableSourceMap" false) }}
+  {{ $noscript := resources.Get "scss/noscript.scss" | css.Sass (dict "transpiler" "dartsass" "targetPath"
+  "assets/css/noscript.css") }}
   <noscript>
     <link rel="stylesheet" href='{{ $noscript.RelPermalink }}' />
   </noscript>

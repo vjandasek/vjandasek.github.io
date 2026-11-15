@@ -1,3 +1,5 @@
+@use '../libs' as *;
+
 .flex {
   display: flex;
   flex-wrap: wrap;

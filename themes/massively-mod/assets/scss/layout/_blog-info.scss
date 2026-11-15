@@ -1,3 +1,5 @@
+@use '../libs' as *;
+
 .blog-info {
   @include vendor('display', 'flex');
   @include vendor('flex-grow', '1');
@@ -5,7 +7,7 @@
 
   list-style: none;
   margin-bottom: 0;
-  color: _palette(alt, fg);
+  color: palette(alt, fg);
 
   ul {
     @include vendor('display', 'flex');
@@ -17,11 +19,11 @@
     li {
       display: block;
       padding: 0 0.4rem;
-      font-family: _font(family-heading);
-      font-weight: _font(weight);
+      font-family: font(family-heading);
+      font-weight: font(weight);
 
       a {
-        color: _palette(alt, fg) !important;
+        color: palette(alt, fg) !important;
       }
     }
   }
