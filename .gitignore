@@ -4,3 +4,11 @@ node_modules
 resources
 package-lock.json
 package.json
+# Hugo build lock (recreated on every build)
+.hugo_build.lock
+
+# Windows download metadata (alternate data streams copied into WSL)
+*:Zone.Identifier
+
+# Zoner Photo Studio sidecar files
+*.data-zps
