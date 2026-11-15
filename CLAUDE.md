@@ -16,7 +16,7 @@ Live at https://vjandasek.cz (custom domain on GitHub Pages; `vjandasek.github.i
   - Many theme files use CRLF line endings; keep each file's existing style.
   - Palette mixes that land on fractional colour channels are written out as literal hex in `libs/_vars.scss`, so Dart Sass output matches the old LibSass output.
   - JS: jQuery + HTML5 UP helpers + lightbox2, concatenated in `layouts/partials/scripts/index.html`.
-- **Pagefind** for search — runs in CI after the Hugo build (`npx pagefind --site public`). Search UI lives in `layouts/blog/section.html`; it won't work under plain `hugo server`.
+- **Pagefind** for search — pinned in `package.json`/`package-lock.json` (its only dependency; run `npm ci` once to install). Runs in CI after the Hugo build (`npx pagefind --site public`). Search UI lives in `layouts/blog/section.html`; it won't work under plain `hugo server`.
 - **GoatCounter** analytics and Font Awesome kit in `layouts/partials/htmlhead-custom.html`. Don't put extra dots in template names: Hugo ≥0.146 treats `name.variant.html` as a variant of `name.html`.
 - Post-list teasers come from `layouts/partials/posts/summary.html` (plain text, first 50 words to end of sentence), not `.Summary`, which since Hugo 0.134 drags in gallery HTML.
 - Contact form posts to **Formspree** (`data/cs/contactinfo.yaml`).
@@ -27,6 +27,7 @@ Live at https://vjandasek.cz (custom domain on GitHub Pages; `vjandasek.github.i
 ```bash
 hugo server                     # local dev at http://localhost:1313
 hugo --gc --minify              # production build into public/
+npm ci                          # install the locked Pagefind (once)
 npx pagefind --site public --serve   # build search index + serve public/ to test search
 ```
 

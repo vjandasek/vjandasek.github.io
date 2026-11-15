@@ -2,8 +2,6 @@
 public
 node_modules
 resources
-package-lock.json
-package.json
 # Hugo build lock (recreated on every build)
 .hugo_build.lock
 
