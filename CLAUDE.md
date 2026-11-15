@@ -46,7 +46,9 @@ No tests or linters; verify changes by building and looking at the pages.
 ## Image conventions
 
 - Every photo `foo.jpg` needs a hand-made thumbnail `foo.thu.jpg` next to it (often a deliberate crop). The `image-entry` shortcode and the gallery partial fail without it.
-- Full-size images are exported at roughly 1800–1920 px and re-processed by Hugo (`Fit 1920x1920 q75`).
+  - Gallery-section thumbnails should be exported at **800×800**: those become WebP q65. Older 400 px ones still render as JPEG q100 (and look soft, since the grid cells are 280–560 CSS px wide). Don't auto-crop thumbnails from the full image: the full-size photos carry a signature that the hand-made crops leave out.
+- Full-size images are exported at roughly 1800–1920 px and re-processed by Hugo (`Fit 1920x1920 q75 webp`). Blog thumbnails and covers are WebP q75 too.
+- Vít judges image quality by eye: any change to formats or quality needs a side-by-side visual comparison first, not just byte counts.
 - Zoner Photo Studio leaves `*.data-zps` sidecar files — don't commit them.
 
 Blog post gallery shortcodes:

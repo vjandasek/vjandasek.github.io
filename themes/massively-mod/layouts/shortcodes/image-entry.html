@@ -3,12 +3,12 @@
 {{ $thu := ($.Page.Resources.GetMatch (print $imgName ".thu.jpg")) }}
 {{ $res := 400 }}
 {{ with .Get "res" }}{{ $res = mul $res (float .) }}{{ end }}
-{{ $res = print $res `x` $res ` q75` }}
+{{ $res = print $res `x` $res ` q75 webp` }}
 {{ $thumb := $thu.Fit $res }}
 {{ $alt := .Get "title" | default $.Page.Title | plainify }}
 
 <li>
-  <a href="{{ ($img.Fit `1920x1920 q75`).Permalink }}" data-lightbox="{{ with .Get `gal` }}{{ . }}{{ else }}{{ `gal` }}{{
+  <a href="{{ ($img.Fit `1920x1920 q75 webp`).Permalink }}" data-lightbox="{{ with .Get `gal` }}{{ . }}{{ else }}{{ `gal` }}{{
     end }}" {{ with .Get `title` }} data-title="{{ . }}" {{ end }}>
     <img src="{{ $thumb.Permalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $alt }}" loading="lazy">
   </a>
