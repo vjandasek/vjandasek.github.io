@@ -1,4 +1,4 @@
-# Sample workflow for building and deploying a Hugo site to GitHub Pages
+# Build the Hugo site and deploy it to GitHub Pages
 name: Deploy Hugo site to Pages
 
 on:
@@ -31,38 +31,50 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.111.2
+      # Keep HUGO_VERSION in sync with the Hugo you use locally
+      HUGO_VERSION: 0.170.0
+      DART_SASS_VERSION: 1.108.2
+      TZ: Europe/Prague
     steps:
-      - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
-      - name: Install Dart Sass Embedded
-        run: sudo snap install dart-sass-embedded
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           submodules: recursive
           fetch-depth: 0
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v6
+      - name: Install Dart Sass
+        run: |
+          curl -sSLf -o "${RUNNER_TEMP}/dart-sass.tar.gz" \
+            "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
+          tar -C "${RUNNER_TEMP}" -xf "${RUNNER_TEMP}/dart-sass.tar.gz"
+          echo "${RUNNER_TEMP}/dart-sass" >> "${GITHUB_PATH}"
+      - name: Install Hugo CLI
+        run: |
+          curl -sSLf -o "${RUNNER_TEMP}/hugo.tar.gz" \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+          mkdir -p "${RUNNER_TEMP}/hugo"
+          tar -C "${RUNNER_TEMP}/hugo" -xf "${RUNNER_TEMP}/hugo.tar.gz"
+          echo "${RUNNER_TEMP}/hugo" >> "${GITHUB_PATH}"
+      - name: Verify tool versions
+        run: |
+          hugo version
+          sass --version
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Build with Hugo
         env:
-          # For maximum backward compatibility with Hugo modules
           HUGO_ENVIRONMENT: production
-          HUGO_ENV: production
         run: |
           hugo \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Run pagefind
-        run: "npx pagefind --site \"public\""
+        run: "npx --yes pagefind@1.6.0 --site public"
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./public
 
@@ -76,4 +88,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v5
