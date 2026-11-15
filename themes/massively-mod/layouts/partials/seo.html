@@ -1,0 +1,55 @@
+{{- /*
+  Search-engine and link-preview tags (Facebook, Messenger, WhatsApp, X, …).
+
+  Description: front-matter `description:`, else for blog posts the same
+  plain-text teaser as the post lists, else a gallery line, else the site
+  description (params.description).
+
+  Image: the post cover (`image:`), else the first full-size photo of the
+  page (never a .thu crop), else params.ogImage (a file in static/).
+  Served as JPEG, which every link-preview crawler understands.
+*/ -}}
+{{- $desc := .Description -}}
+{{- if and (not $desc) .IsPage (eq .Section "blog") -}}
+  {{- $desc = partial "posts/summary.html" . -}}
+{{- end -}}
+{{- if and (not $desc) (eq .Layout "single_photos") -}}
+  {{- $desc = printf "%s – fotogalerie Víta Jandáska" .Title -}}
+{{- end -}}
+{{- $desc = $desc | default site.Params.description | plainify | strings.TrimSpace -}}
+
+{{- $img := false -}}
+{{- with .Params.image -}}{{- $img = $.Resources.GetMatch . -}}{{- end -}}
+{{- if not $img -}}
+  {{- range .Resources.ByType "image" -}}
+    {{- if and (not $img) (not (findRE `\.thu\.[^./]+$` .Name)) -}}{{- $img = . -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $isPost := and .IsPage (eq .Section "blog") -}}
+{{- $title := cond .IsHome site.Title .Title }}
+  <meta name="description" content="{{ $desc }}" />
+  <link rel="canonical" href="{{ .Permalink }}" />
+  {{- with site.GetPage "/blog" }}{{ with .OutputFormats.Get "rss" }}
+  <link rel="alternate" type="application/rss+xml" title="{{ site.Title }} – blog" href="{{ .Permalink }}" />
+  {{- end }}{{ end }}
+  <meta property="og:site_name" content="{{ site.Title }}" />
+  <meta property="og:locale" content="cs_CZ" />
+  <meta property="og:type" content="{{ cond $isPost "article" "website" }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:title" content="{{ $title }}" />
+  <meta property="og:description" content="{{ $desc }}" />
+  {{- if $isPost }}{{ with .Date }}{{ if not .IsZero }}
+  <meta property="article:published_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}" />
+  {{- end }}{{ end }}{{ range .Params.tags }}
+  <meta property="article:tag" content="{{ . }}" />
+  {{- end }}{{ end }}
+  {{- with $img }}{{ $og := .Fit "1200x1200 q80 jpg" }}
+  <meta property="og:image" content="{{ $og.Permalink }}" />
+  <meta property="og:image:width" content="{{ $og.Width }}" />
+  <meta property="og:image:height" content="{{ $og.Height }}" />
+  {{- else }}{{ with site.Params.ogImage }}
+  <meta property="og:image" content="{{ . | absURL }}" />
+  {{- end }}{{ end }}
+  <meta property="og:image:alt" content="{{ $title }}" />
+  <meta name="twitter:card" content="summary_large_image" />

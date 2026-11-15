@@ -11,6 +11,9 @@ capitalizeListTitles = false
   # set to change date format
   dateFormat = '2.1.2006'
   backgroundPath = 'images/bg.jpg'
+  # Default meta description and link-preview image (pages can override; see partials/seo.html)
+  description = 'Vít Jandásek, fotografie dopravy, přírody, krajiny, města; analogová fotografie a cestovatelský fotoblog.'
+  ogImage = 'images/bg.jpg'
   homeTitle = 'Home'
 
 # Below parameters can be set to override default post settings

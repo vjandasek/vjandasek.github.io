@@ -11,6 +11,7 @@
   </title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {{ partial "seo.html" . }}
   <!-- CSS -->
   {{/* Values from site config, available in Sass via `@use "hugo:vars"` */}}
   {{ $sassVars := dict "backgroundPath" (site.Params.backgroundPath | default "images/bg.jpg") }}
