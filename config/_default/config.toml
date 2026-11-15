@@ -29,3 +29,7 @@ capitalizeListTitles = false
   label = 'Čeština'
 [languages.cs.params]
   homeTitle = 'Úvod'
+
+# Only tags are used; Hugo's default 'categories' taxonomy is switched off
+[taxonomies]
+  tag = 'tags'
