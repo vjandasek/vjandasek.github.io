@@ -2,8 +2,6 @@ baseURL = 'http://localhost:1313/'
 languageCode = 'cz-CS'
 title = 'vjandasek'
 theme = 'massively-mod'
-googleanalytics = ''
-disqusShortname = ''
 defaultContentLanguage = 'cz'
 summaryLength = 50
 
