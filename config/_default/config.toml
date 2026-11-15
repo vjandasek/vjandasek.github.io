@@ -3,7 +3,7 @@ locale = 'cs-CZ'
 title = 'vjandasek'
 theme = 'massively-mod'
 defaultContentLanguage = 'cz'
-summaryLength = 50
+capitalizeListTitles = false
 
 [params]
   # set below parameter to define a favicon

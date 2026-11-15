@@ -1,0 +1,19 @@
+{{- /*
+  Plain-text teaser for post lists, reproducing pre-0.134 Hugo auto-summaries:
+  the first 50 words, extended to the end of the sentence (if one ends later on).
+  Newer Hugo builds .Summary from whole HTML paragraphs, which drags gallery
+  thumbnails in and leaves posts that open with a gallery with no text at all.
+*/ -}}
+{{- $limit := 50 -}}
+{{- $words := findRE `\S+` (.Plain | htmlUnescape) -}}
+{{- $out := first $limit $words -}}
+{{- $tail := slice -}}
+{{- $sentenceEnded := false -}}
+{{- range after $limit $words -}}
+  {{- if not $sentenceEnded -}}
+    {{- $tail = $tail | append . -}}
+    {{- if findRE `[.?!]"?$` . -}}{{- $sentenceEnded = true -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if $sentenceEnded -}}{{- $out = $out | append $tail -}}{{- end -}}
+{{- delimit $out " " -}}
