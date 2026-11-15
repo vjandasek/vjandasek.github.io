@@ -1,6 +1,6 @@
 ---
 title: "Krajina"
 layout: "single_photos"
-_build:
+build:
   publishResources: false
 ---

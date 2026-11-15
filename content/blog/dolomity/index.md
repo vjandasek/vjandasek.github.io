@@ -1,7 +1,7 @@
 ---
 title: "Zimní Dolomity 2023"
 date: 2024-03-06T08:00:00+01:00
-_build:
+build:
   publishResources: false
 image: images/04.jpg
 tags:

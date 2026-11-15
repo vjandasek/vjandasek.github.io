@@ -1,7 +1,7 @@
 ---
 title: "Itálie 2023 - Florencie, Bologna"
 date: 2024-03-10T20:00:00+01:00
-_build:
+build:
   publishResources: false
 image: images/04.jpg
 tags:

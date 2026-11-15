@@ -1,7 +1,7 @@
 ---
 title: "Itálie 2023 - La Spezia, Cinque Terre"
 date: 2024-03-25T09:00:00+01:00
-_build:
+build:
   publishResources: false
 image: images/59.jpg
 tags:

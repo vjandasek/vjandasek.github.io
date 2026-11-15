@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-_build:
+build:
   publishResources: false
 ---
 

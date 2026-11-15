@@ -1,7 +1,7 @@
 ---
 title: "Itálie 2023 - Siena, San Gimignano, Pisa"
 date: 2024-03-15T20:00:00+01:00
-_build:
+build:
   publishResources: false
 image: images/31.jpg
 tags:

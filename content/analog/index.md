@@ -1,6 +1,6 @@
 ---
 title: "Analog"
 layout: "single_photos"
-_build:
+build:
   publishResources: false
 ---

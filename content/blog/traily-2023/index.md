@@ -1,7 +1,7 @@
 ---
 title: "S Richardem na trailech kolem Ostravy"
 date: 2023-06-04T09:00:00+02:00
-_build:
+build:
   publishResources: false
 image: images/14.jpg
 tags:

@@ -1,5 +1,5 @@
 baseURL = 'http://localhost:1313/'
-languageCode = 'cz-CS'
+locale = 'cs-CZ'
 title = 'vjandasek'
 theme = 'massively-mod'
 defaultContentLanguage = 'cz'
@@ -23,6 +23,6 @@ summaryLength = 50
 
 [languages]
 [languages.cz]
-  languageName = 'Čeština'
+  label = 'Čeština'
 [languages.cz.params]
   homeTitle = 'Úvod'
