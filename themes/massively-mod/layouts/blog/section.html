@@ -4,22 +4,22 @@
 
   {{- $postsPageSize := .Site.Params.Posts.pagesize | default 6 }}
 
-  {{- .Scratch.Set "postsFeaturedPostEnabled" true }}
+  {{- .Store.Set "postsFeaturedPostEnabled" true }}
   {{- if (or (eq .Site.Params.Posts.featuredpost "false") (eq .Site.Params.Posts.featuredpost false)) }}
-  {{- .Scratch.Set "postsFeaturedPostEnabled" false }}
+  {{- .Store.Set "postsFeaturedPostEnabled" false }}
   {{- end }}
-  {{- $postsFeaturedPostEnabled := .Scratch.Get "postsFeaturedPostEnabled" }}
+  {{- $postsFeaturedPostEnabled := .Store.Get "postsFeaturedPostEnabled" }}
 
   {{- $posts := where .Data.Pages "Section" .Section }}
 
   {{- $firstPost := first 1 $posts }}
 
   {{- if and (eq $postsFeaturedPostEnabled true) (gt (len $posts) 1) -}}
-  {{- .Scratch.Set "postsForPaging" (after 1 $posts) }}
+  {{- .Store.Set "postsForPaging" (after 1 $posts) }}
   {{- else }}
-  {{- .Scratch.Set "postsForPaging" $posts }}
+  {{- .Store.Set "postsForPaging" $posts }}
   {{- end -}}
-  {{- $postsForPaging := .Scratch.Get "postsForPaging" -}}
+  {{- $postsForPaging := .Store.Get "postsForPaging" -}}
 
   {{- $postsPaging := .Paginate $postsForPaging $postsPageSize -}}
 
@@ -35,12 +35,12 @@
         <div class="grid">
           <div class="grid-main">
             {{- if (eq $postsFeaturedPostEnabled true) }}
-            {{- partial "posts/featured.html" (dict "firstpost" $firstPost "siteData" (index .Site.Data
+            {{- partial "posts/featured.html" (dict "firstpost" $firstPost "siteData" (index hugo.Data
             .Site.Language.Lang)) }}
             {{- end }}
 
             {{- if (not (and (eq (len $posts) 1) (eq $postsFeaturedPostEnabled true))) }}
-            {{- partial "posts/list.html" (dict "posts" $postsPaging "siteData" (index .Site.Data .Site.Language.Lang)) }}
+            {{- partial "posts/list.html" (dict "posts" $postsPaging "siteData" (index hugo.Data .Site.Language.Lang)) }}
             {{- end }}
 
             {{- $paginator := .Paginator }}
