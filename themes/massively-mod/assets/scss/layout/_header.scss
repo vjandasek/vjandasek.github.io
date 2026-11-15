@@ -23,6 +23,9 @@
   // #intro + #header in _intro.scss pulls the header up by this height.
   height: 13rem;
   padding-bottom: 4rem + 1.25rem;
+  // Darken the photo a touch behind the signature, so the white signature
+  // reads against a pale sky. #intro + #header (home page) stays clear.
+  background-color: rgba(0, 0, 0, 0.25);
   position: relative;
   text-align: center;
   z-index: 2;

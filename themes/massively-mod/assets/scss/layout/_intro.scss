@@ -49,6 +49,7 @@
 
   &+#header {
     margin-top: -13rem; // = #header height
+    background-color: transparent; // no inner-page tint over the intro photo
 
     .logo {
       @include vendor('transform', 'translateY(2rem)');
