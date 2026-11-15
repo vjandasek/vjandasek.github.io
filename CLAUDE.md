@@ -14,7 +14,7 @@ Live at https://vjandasek.cz (custom domain on GitHub Pages; `vjandasek.github.i
 - **Pagefind** for search — runs in CI after the Hugo build (`npx pagefind --site public`). Search UI lives in `layouts/blog/section.html`; it won't work under plain `hugo server`.
 - **GoatCounter** analytics and Font Awesome kit in `layouts/partials/htmlhead-custom.html`. Don't put extra dots in template names: Hugo ≥0.146 treats `name.variant.html` as a variant of `name.html`.
 - Post-list teasers come from `layouts/partials/posts/summary.html` (plain text, first 50 words to end of sentence), not `.Summary`, which since Hugo 0.134 drags in gallery HTML.
-- Contact form posts to **Formspree** (`data/cz/contactinfo.yaml`).
+- Contact form posts to **Formspree** (`data/cs/contactinfo.yaml`).
 - Deploy: push to `master` → GitHub Actions builds and deploys to Pages.
 
 ## Commands
@@ -30,8 +30,8 @@ No tests or linters; verify changes by building and looking at the pages.
 ## Layout of the repo
 
 - `config/_default/config.toml` — main config; `config/production/config.toml` overrides `baseURL` (CI passes `--baseURL` anyway).
-- `data/cz/*.yaml` — nav menu, intro text, social links, contact info.
-- `i18n/cz.toml` — UI strings.
+- `data/cs/*.yaml` — nav menu, intro text, social links, contact info.
+- `i18n/cs.toml` — UI strings.
 - `content/` — every page is a **page bundle** (`index.md` + images alongside or in `images/`).
   - Gallery sections (`transport`, `wildlife`, `landscape`, `cityscape`, `analog`) use `layout: "single_photos"`, which auto-renders every `*.thu.*` resource as a thumbnail linked to its full-size sibling.
   - Blog posts live in `content/blog/<slug>/index.md` with `image:` (cover), `tags:`, and images in `images/`.

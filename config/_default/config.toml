@@ -2,7 +2,7 @@ baseURL = 'http://localhost:1313/'
 locale = 'cs-CZ'
 title = 'vjandasek'
 theme = 'massively-mod'
-defaultContentLanguage = 'cz'
+defaultContentLanguage = 'cs'
 capitalizeListTitles = false
 
 [params]
@@ -22,7 +22,7 @@ capitalizeListTitles = false
   showFirstLast = false
 
 [languages]
-[languages.cz]
+[languages.cs]
   label = 'Čeština'
-[languages.cz.params]
+[languages.cs.params]
   homeTitle = 'Úvod'
