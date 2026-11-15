@@ -15,7 +15,7 @@
   </header>
   {{ if .Params.image }}
   {{ $img := .Resources.GetMatch .Params.image }}
-  <a href="{{ .Permalink }}" class="image main"><img src="{{ ($img.Fit `1920x1920 q75`).Permalink }}" alt="" /></a>
+  <a href="{{ .Permalink }}" class="image main">{{ $cover := $img.Fit `1920x1920 q75` }}<img src="{{ $cover.Permalink }}" width="{{ $cover.Width }}" height="{{ $cover.Height }}" alt="{{ .Title }}" /></a>
   {{ end }}
   <ul class="actions">
     <li><a href="{{ .Permalink }}" class="button big">{{ $data.post.linktext }}</a></li>
