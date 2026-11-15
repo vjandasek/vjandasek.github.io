@@ -1,10 +1,15 @@
 <ul class="image-gallery">
   {{ $resources := .context.Resources }}
-  {{ range .context.Resources }}
-    {{ $splitted := split .Name "." }}
-    {{ if eq (index $splitted 1) "thu" }}
+  {{/* Thumbnails are name.thu.ext (any extra dots in name are fine); the full photo is name.ext */}}
+  {{ range $resources.ByType "image" }}
+    {{ if findRE `\.thu\.[^./]+$` .Name }}
       <li>
-        {{ $fullres := $resources.GetMatch (print (index $splitted 0) `.` (index $splitted 2)) }}
+        {{ $fullName := replaceRE `\.thu(\.[^./]+)$` "$1" .Name }}
+        {{ $fullres := $resources.GetMatch $fullName }}
+        {{ if not $fullres }}
+          {{ warnf "image-gallery: %s has no full-size %s in %s, linking the thumbnail instead" .Name $fullName $.context.File.Path }}
+          {{ $fullres = . }}
+        {{ end }}
         <a href="{{ ($fullres.Fit `1920x1920 q75 webp`).Permalink }}" data-lightbox="gal">
           {{/* Hand-made 800 px thumbnails become WebP q65; older 400 px ones stay JPEG q100 until re-exported */}}
           {{ $thumb := .Fit `400x400 q100` }}

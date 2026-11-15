@@ -11,6 +11,6 @@ V profesním životě se živím programováním, proto ve volném čase s nadš
 Pokud se vám některá fotka líbí a rádi byste ji měli třeba doma na své zdi nebo jako dárek, neváhejte se ozvat - určitě se dohodneme.
 
 <--->
-![](images/profil.jpg)
+![Vít Jandásek](images/profil.jpg)
 
 {{< /columns >}}

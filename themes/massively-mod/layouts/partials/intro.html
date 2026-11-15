@@ -1,7 +1,7 @@
 {{ $data := index hugo.Data .Site.Language.Lang }}
 {{ with $data.intro }}
 <div id="intro">
-  <img src="/images/signature.svg">
+  <img src="/images/signature.svg" alt="Vít Jandásek">
   <p>
     {{- range $i, $e := .description -}}
     {{- if $i -}}<br />{{- end -}} {{- .line -}}

@@ -1,11 +1,20 @@
-{{ $img := $.Page.Resources.GetMatch (.Get "src") }}
-{{ $imgName := strings.TrimSuffix ".jpg" $img.Name }}
-{{ $thu := ($.Page.Resources.GetMatch (print $imgName ".thu.jpg")) }}
-{{ $res := 400 }}
-{{ with .Get "res" }}{{ $res = mul $res (float .) }}{{ end }}
-{{ $res = print $res `x` $res ` q75 webp` }}
-{{ $thumb := $thu.Fit $res }}
-{{ $alt := .Get "title" | default $.Page.Title | plainify }}
+{{- $src := .Get "src" -}}
+{{- $img := $.Page.Resources.GetMatch $src -}}
+{{- if not $img -}}
+  {{- errorf "image-entry: image %q not found in %s" $src $.Page.File.Path -}}
+{{- else -}}
+{{- $ext := path.Ext $img.Name -}}
+{{- $thu := $.Page.Resources.GetMatch (print (strings.TrimSuffix $ext $img.Name) ".thu" $ext) -}}
+{{- if not $thu -}}
+  {{- /* Safety net only: the full photo carries the signature, so hand-made thumbnails are still wanted */ -}}
+  {{- warnf "image-entry: no thumbnail for %s in %s, scaling the full image instead" $img.Name $.Page.File.Path -}}
+  {{- $thu = $img -}}
+{{- end -}}
+{{- $res := 400 -}}
+{{- with .Get "res" }}{{ $res = mul $res (float .) }}{{ end -}}
+{{- $res = print $res `x` $res ` q75 webp` -}}
+{{- $thumb := $thu.Fit $res -}}
+{{- $alt := .Get "title" | default $.Page.Title | plainify }}
 
 <li>
   <a href="{{ ($img.Fit `1920x1920 q75 webp`).Permalink }}" data-lightbox="{{ with .Get `gal` }}{{ . }}{{ else }}{{ `gal` }}{{
@@ -13,3 +22,4 @@
     <img src="{{ $thumb.Permalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $alt }}" loading="lazy">
   </a>
 </li>
+{{- end -}}
