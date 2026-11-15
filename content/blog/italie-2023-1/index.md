@@ -14,6 +14,7 @@ tags:
 {{< image-entry src="images/01.jpg" title="Ponte Vecchio, který se již téměř sedm století klene přes řeku Arnu" res="2">}}
 {{< image-entry src="images/02.jpg" title="Kupole florentské katedrály" res="2">}}
 {{< image-gal-end >}}
+
 Florencie, dle různých zdrojů nejhezčí italské město (či dokonce evropské) na naši návštěvu čekalo dlouho. A zejména naše kamarádka Lucy, která se zde před několika lety s manželem zabydlela. Déle jsme je už odmítat nemohli, a tak jsme se v létě 2023 vydali přesvědčit se o krásách místní architektury a genia loci osobně. Zahájili jsme tak naši nejhezčí italskou dovolenou.
 
 Pokud jde o můj osobní pocit z města, bylo vskutku pěkné, ale asi bych jej nenazval nejhezčím v Evropě. Rozhodně ale stojí za návštěvu z mnoha důvodů, obzvláště když máte tak milou hostitelku, jako jsme měli my.

@@ -199,27 +199,28 @@
       width: 100%;
     }
 
-    // Keep running text to a readable measure (~70 characters of Merriweather)
-    // while photo galleries use the full column width. Galleries that Markdown
-    // has wrapped inside a <p> must stay wide, hence the :has() exclusion.
-    // Post text is a step larger than elsewhere; as max-width is in em, the
-    // column widens with it and the character count stays the same.
+    // Keep running text to a readable measure (~70 characters of Merriweather
+    // at the 1.125rem post size) while photo galleries use the full column
+    // width. The width is in rem, not em, so headings and paragraphs share
+    // one left edge whatever their font size.
+    // A gallery placed straight after a line of text must have a blank line
+    // before it in the Markdown, or the text ends up outside any <p>.
     >.post {
-      >p:not(:has(.image-gallery)),
+      >p,
       >blockquote,
       >ol,
       >ul:not(.image-gallery) {
         font-size: 1.125rem;
       }
 
-      >p:not(:has(.image-gallery)),
+      >p,
       >h2,
       >h3,
       >h4,
       >blockquote,
       >ol,
       >ul:not(.image-gallery) {
-        max-width: 35em;
+        max-width: 39.375rem;
         margin-left: auto;
         margin-right: auto;
       }

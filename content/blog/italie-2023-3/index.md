@@ -14,10 +14,12 @@ tags:
 {{< image-gal-start cols="1">}}
 {{< image-entry src="images/49.jpg" title="Přístav La Spezia v noci" res="3">}}
 {{< image-gal-end >}}
+
 Poslední část dovolené jsme strávili u moře. Kdo by si ovšem představoval flákání se na pláži, ten nás nezná, neboť to není nic pro nás - okoupání v moři je potřeba si zasloužit nějakou túrou. Jakožto "základnu" jsme si zvolili ligurské město La Spezia, které sice nic moc nenabízí, ale je velice výhodným východištěm známé italské oblasti Cinque Terre - pět starobylých barevných městeček na strmých březích moře.
 
 ### Portovenere
 Ačkoliv se Portovenere mezi oněch pět městeček nepočítá, je neméně romantické a malebné. Jeho součástí je mj. ostrov Palmaria, který nabízí krásné výhledy do okolí, například i na gotický kostel San Pietro z dvanáctého století.
+
 {{< image-gal-start cols="2" columns="2fr 4fr">}}
 {{< image-entry src="images/50.jpg" title="Tento výhled nás přivítal v našem apartmánu." res="2">}}
 {{< image-entry src="images/51.jpg" title="Portovenere" res="2">}}
@@ -32,6 +34,7 @@ Ačkoliv se Portovenere mezi oněch pět městeček nepočítá, je neméně rom
 
 ### Riomaggiore
 Pět městeček v Cinque Terre jsme se rozhodli prozkoumat dvojím způsobem - nejprve pěšky, což byla kvůli teplotám a uzavírkám turistických pěšin z důvodu sesuvů docela řehole, následně na palubě výletní lodi. První na řadě bylo Riomaggiore. Neuvěřitelné, že v takovém místě člověk již stovky let úspěšně žije a hospodaří. Na pohled všechno vypadá krásně a idylicky, ale většina uliček je zde ve formě uzoučkého, strmého schodiště.
+
 {{< image-gal-start cols="1">}}
 {{< image-entry src="images/55.jpg" title="Riomaggiore" res="3">}}
 {{< image-gal-end >}}
@@ -43,12 +46,14 @@ Pět městeček v Cinque Terre jsme se rozhodli prozkoumat dvojím způsobem - n
 
 ### Manarola
 V porovnání s Riomaggiore sice menší, ale o to barevnější. Vše lemují nekonečné kamenné terasy, na kterých se již po staletí pěstuje vinná réva, olivovníky či citronovníky.
+
 {{< image-gal-start cols="1">}}
 {{< image-entry src="images/59.jpg" title="Manarola" res="3">}}
 {{< image-gal-end >}}
 
 ### Corniglia
 Nejmenší a nejobtížněji dostupné městečko, jako jediné neleží přímo u moře, ale vysoko na skále nad ním. To sice znamená horší dostupnost nádraží i moře - vystoupat sto výškových metrů není jen tak, ale taky lepší výhled na moře.
+
 {{< image-gal-start cols="3" columns="18fr 16fr 9fr">}}
 {{< image-entry src="images/60.jpg" title="Corniglia - zde je dobře vidět poloha vysoko nad mořem." res="2">}}
 {{< image-entry src="images/61.jpg" title="Corniglia" res="1.5">}}
@@ -57,6 +62,7 @@ Nejmenší a nejobtížněji dostupné městečko, jako jediné neleží přímo
 
 ### Vernazza
 Vernazza je údajně nejkrásnější z celé pětice. My na ni budeme vzpomínat především jako na místo, kde jsme byli už pěkně unaveni a kde prodávají předražené mořské plody.
+
 {{< image-gal-start cols="1">}}
 {{< image-entry src="images/63.jpg" title="Vernazza" res="3">}}
 {{< image-gal-end >}}
