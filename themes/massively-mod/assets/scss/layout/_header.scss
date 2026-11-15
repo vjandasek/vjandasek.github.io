@@ -17,8 +17,12 @@
   @include vendor('justify-content', 'flex-end');
   @include vendor('pointer-events', 'none');
   @include vendor('user-select', 'none');
-  height: 20rem;
-  padding-bottom: (size(padding) * 4);
+  // A slim strip: just enough for the signature, so pages start sooner.
+  // On wide screens #nav (4rem) overlays the bottom of the header, so the
+  // padding clears the nav plus a small gap under the signature.
+  // #intro + #header in _intro.scss pulls the header up by this height.
+  height: 13rem;
+  padding-bottom: 4rem + 1.25rem;
   position: relative;
   text-align: center;
   z-index: 2;
@@ -42,7 +46,7 @@
       @include vendor('transition', 'opacity #{duration(transition)} ease-in-out');
       display: block;
       filter: invert(99%) sepia(0%) saturate(1806%) hue-rotate(20deg) brightness(112%) contrast(100%);
-      height: 8rem;
+      height: 6.5rem;
       width: auto;
     }
 
@@ -52,15 +56,11 @@
   }
 
   @include breakpoint('<=medium') {
-    height: 14rem;
-    padding-bottom: (size(padding) * 2);
-  }
-
-  @include breakpoint('<=small') {
-    padding-bottom: (size(padding) * 1.5);
+    height: 9rem;
+    padding-bottom: (size(padding) * 0.625);
 
     .logo img {
-      height: 6rem;
+      height: 5.5rem;
     }
   }
 }

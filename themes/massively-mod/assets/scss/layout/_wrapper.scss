@@ -58,9 +58,14 @@
     }
   }
 
+  // Portrait screens (phones): fit the photo to the screen height and centre
+  // it, so the whole valley shows instead of a zoomed-in patch of sky.
+  // vh rather than %, because when the parallax is on, .bg is as tall as
+  // the whole page.
   @include orientation(portrait) {
     >.bg {
-      background-size: auto, auto, auto 175%;
+      background-size: auto, auto, auto 100vh;
+      background-position: center, center, center top;
     }
   }
 }
