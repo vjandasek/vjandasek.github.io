@@ -111,11 +111,25 @@
 
   };
 
-  // Play initial animations on page load.
-  $window.on('load', function () {
-    window.setTimeout(function () {
-      $body.removeClass('is-preload');
-    }, 100);
+  // Play initial animations as soon as the background photo is ready, or
+  // after 0.6 s at most. (It used to wait for window load, i.e. every image
+  // on the page, which on a gallery page kept the screen dark for seconds.)
+  $(function () {
+    var started = false,
+      start = function () {
+        if (started) return;
+        started = true;
+        $body.removeClass('is-preload');
+      },
+      urls = ($('#wrapper > .bg').css('background-image') || '').match(/url\([^)]+\)/g);
+
+    if (urls) {
+      var img = new Image();
+      img.onload = img.onerror = start;
+      img.src = urls[urls.length - 1].replace(/^url\(["']?|["']?\)$/g, '');
+    }
+
+    window.setTimeout(start, 600);
   });
 
   // Scrolly.

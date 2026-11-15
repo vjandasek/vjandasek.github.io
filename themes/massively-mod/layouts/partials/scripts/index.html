@@ -4,7 +4,7 @@
 {{ $browser := resources.Get "js/browser.min.js" }}
 {{ $breakpoints := resources.Get "js/breakpoints.min.js" }}
 {{ $util := resources.Get "js/util.min.js" }}
-{{ $main := resources.Get "js/main.min.js" }}
+{{ $main := resources.Get "js/main.js" | minify }}
 {{ $lightbox := resources.Get "js/lightbox.min.js" }}
 
 {{ $js := slice $jQuery $scrollex $scrolly $browser $breakpoints $util $main $lightbox | resources.Concat

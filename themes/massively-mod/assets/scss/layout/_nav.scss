@@ -15,8 +15,8 @@
   @include color-list(invert);
   @include color-typography(invert);
   @include vendor('display', 'flex');
-  @include vendor('transition', ('transform 1s ease',
-      'opacity 1s ease'
+  @include vendor('transition', ('transform 0.5s ease',
+      'opacity 0.5s ease'
     ));
   background-color: #11151a;
   @include color-typography(invert);

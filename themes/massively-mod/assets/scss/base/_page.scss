@@ -54,4 +54,13 @@ body {
     }
   }
 
+  // No page-load fade or slide for people who've asked for less motion.
+  @media (prefers-reduced-motion: reduce) {
+    #wrapper:before,
+    #intro,
+    #nav {
+      @include vendor('transition', 'none !important');
+    }
+  }
+
 }
