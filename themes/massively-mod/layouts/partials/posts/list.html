@@ -9,10 +9,6 @@
       {{ end }}
       <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
     </header>
-    {{ if .Params.image }}
-    <a href="{{ .Permalink }}" class="image fit"><img
-        src="{{ print (path.Dir .Page.RelPermalink) `/` .Params.image | relURL }}" alt="" /></a>
-    {{ end }}
     {{ if .Description }}
     <p>{{ .Description }}</p>
     {{ else }}
