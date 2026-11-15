@@ -31,21 +31,23 @@
         'visibility 0.5s'
       ));
     @include vendor('pointer-events', 'auto');
-    border-style: solid;
-    border-color: palette(invert, border);
-    border-width: 5px !important;
-    font-family: font(family-heading);
-    font-size: 2.25rem;
-    font-weight: font(weight-heading);
-    letter-spacing: 0.075em;
-    line-height: 1;
-    padding: 1rem 1.75rem;
-    text-transform: uppercase;
+    border: 0;
+    display: block;
+    line-height: 0;
     visibility: visible;
 
-    &:hover {
-      border-color: palette(invert, accent) !important;
-      color: palette(invert, accent) !important;
+    // The handwritten signature, as on the home page intro. The SVG is black;
+    // the filter turns it white, same as #intro img.
+    img {
+      @include vendor('transition', 'opacity #{duration(transition)} ease-in-out');
+      display: block;
+      filter: invert(99%) sepia(0%) saturate(1806%) hue-rotate(20deg) brightness(112%) contrast(100%);
+      height: 8rem;
+      width: auto;
+    }
+
+    &:hover img {
+      opacity: 0.75;
     }
   }
 
@@ -57,9 +59,8 @@
   @include breakpoint('<=small') {
     padding-bottom: (size(padding) * 1.5);
 
-    .logo {
-      font-size: 1.75rem;
-      border-width: 3px !important;
+    .logo img {
+      height: 6rem;
     }
   }
 }

@@ -198,6 +198,32 @@
       margin: auto !important;
       width: 100%;
     }
+
+    // Keep running text to a readable measure (~70 characters of Merriweather)
+    // while photo galleries use the full column width. Galleries that Markdown
+    // has wrapped inside a <p> must stay wide, hence the :has() exclusion.
+    // Post text is a step larger than elsewhere; as max-width is in em, the
+    // column widens with it and the character count stays the same.
+    >.post {
+      >p:not(:has(.image-gallery)),
+      >blockquote,
+      >ol,
+      >ul:not(.image-gallery) {
+        font-size: 1.125rem;
+      }
+
+      >p:not(:has(.image-gallery)),
+      >h2,
+      >h3,
+      >h4,
+      >blockquote,
+      >ol,
+      >ul:not(.image-gallery) {
+        max-width: 35em;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
   }
 
   @include color-button(invert);

@@ -36,7 +36,7 @@ textarea {
   font-family: font(family);
   font-weight: font(weight);
   font-size: 1rem;
-  line-height: 2.375;
+  line-height: 1.75;
 }
 
 a {
@@ -64,7 +64,7 @@ i {
 }
 
 p {
-  text-align: justify;
+  text-align: start;
   margin: 0 0 size(element-margin) 0;
 }
 
