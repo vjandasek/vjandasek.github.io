@@ -28,10 +28,9 @@
     display: inline-block;
     font-family: font(family-heading);
     font-size: 0.8rem;
-    font-weight: font(weight-heading);
+    font-weight: font(weight-label);
     height: size(element-height);
-    letter-spacing: 0.075em;
-    letter-spacing: font(letter-spacing-heading);
+    letter-spacing: font(letter-spacing-label);
     line-height: calc(#{size(element-height)} - 4px);
     margin-left: -2px;
     min-width: size(element-height);

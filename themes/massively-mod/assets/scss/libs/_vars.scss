@@ -20,12 +20,16 @@ $size: (
 
 // Font.
 $font: (
-  family: ('Merriweather', Georgia, serif),
-  family-heading: ('Source Sans Pro', Helvetica, sans-serif),
+  // Self-hosted, see base/_fonts.scss. Headings in sentence case; menu, buttons
+  // and small labels in spaced capitals (weight-label).
+  family: ('Source Serif 4', Georgia, serif),
+  family-heading: ('Barlow Semi Condensed', 'Arial Narrow', sans-serif),
   family-fixed: ('Courier New', monospace),
-  weight: 300,
+  weight: 400,
   weight-bold: 600,
-  weight-heading: 900
+  weight-heading: 600,
+  weight-label: 700,
+  letter-spacing-label: 0.12em
 );
 
 // Palette.

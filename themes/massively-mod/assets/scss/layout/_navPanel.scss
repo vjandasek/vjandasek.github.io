@@ -23,8 +23,8 @@
   color: palette(invert, fg-bold);
   font-family: font(family-heading);
   font-size: 0.9rem;
-  font-weight: font(weight-heading);
-  letter-spacing: 0.075em;
+  font-weight: font(weight-label);
+  letter-spacing: font(letter-spacing-label);
   padding: 0.375rem 1.25rem;
   text-transform: uppercase;
   z-index: misc(z-index-base) + 1;
@@ -84,10 +84,9 @@
         border-bottom: 0;
         display: block;
         font-family: font(family-heading);
-        font-size: 0.9rem;
-        font-size: 0.9rem;
-        font-weight: font(weight-heading);
-        letter-spacing: 0.075em;
+        font-size: 1rem;
+        font-weight: font(weight-label);
+        letter-spacing: font(letter-spacing-label);
         padding: 0.75rem 0;
         text-transform: uppercase;
       }

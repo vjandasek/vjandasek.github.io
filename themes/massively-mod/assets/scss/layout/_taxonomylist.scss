@@ -18,7 +18,8 @@ ul#taxonomylist {
   li:first-child {
     font-size: x-large;
     font-family: font(family-heading);
-    font-weight: 900;
+    font-weight: font(weight-heading);
+    letter-spacing: font(letter-spacing-label);
     margin-bottom: 1rem;
     text-transform: uppercase;
   }

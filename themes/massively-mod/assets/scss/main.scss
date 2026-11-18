@@ -4,6 +4,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+@use 'base/fonts';
 @use 'base/reset';
 @use 'base/page';
 @use 'base/typography';
@@ -35,4 +36,3 @@
 
 // Plain CSS imports (not Sass): kept as @import, which is fine.
 @import 'font-awesome.min.css';
-@import url('https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:400,900');
