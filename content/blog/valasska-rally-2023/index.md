@@ -1,5 +1,6 @@
 ---
 title: "Kowax Valašská rally 2023 v DOV"
+description: "Valašská rally poprvé v Ostravě: rychlostní zkoušky v Dolní oblasti Vítkovice pod vysokými pecemi, soutěžní vozy MČR i historici."
 date: 2023-04-09T08:00:00+02:00
 build:
   publishResources: false

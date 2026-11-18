@@ -1,5 +1,6 @@
 ---
 title: "Zimní Dolomity 2023"
+description: "Běžky, kýčovité scenérie a slunečno, ale pořádná zima: vzpomínka na zimní Dolomity kolem Brunecku. Tři údolí, jeden pád, verdikt 11/10."
 date: 2024-03-06T08:00:00+01:00
 build:
   publishResources: false

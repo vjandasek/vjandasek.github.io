@@ -1,5 +1,6 @@
 ---
 title: "S Richardem na trailech kolem Ostravy"
+description: "První focení na MTB trailech kolem Ostravy: nový foťák, Richard, skoky pořád dokola a nakonec ani jeden pád."
 date: 2023-06-04T09:00:00+02:00
 build:
   publishResources: false
