@@ -16,9 +16,11 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
+# Two lanes: a newer master run cancels an older master run, and a newer
+# branch run cancels an older branch run, but branch runs (which can't deploy
+# anyway) never cancel master.
 concurrency:
-  group: "pages"
+  group: ${{ github.ref == 'refs/heads/master' && 'pages-master' || 'pages-branches' }}
   cancel-in-progress: true
 
 # Default to bash
