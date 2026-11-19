@@ -11,9 +11,11 @@
 
 /* Footer */
 
+// Just the contact form, in one compact column the width of the post text.
+// (Social links used to sit beside it; they're in the nav bar already.)
+
 #footer {
   @include color(alt);
-  @include vendor('display', 'flex');
   background-color: #11151a;
   color: palette(fg-light);
   cursor: default;
@@ -22,89 +24,53 @@
   width: 100%;
   max-width: none;
   z-index: 2;
+  padding: (size(padding) * 1.5) size(padding);
 
-  padding-left: 12.5%;
-  padding-right: 12.5%;
+  >.contact-form {
+    max-width: 39.375rem;
+    margin: 0 auto;
+  }
 
-  >section {
-    @include vendor('flex-basis', '50%');
-    @include vendor('flex-grow', '1');
-    @include vendor('flex-shrink', '1');
-    @include padding((size(padding) * 2), (size(padding) * 2));
-    border-left: solid 2px palette(alt, border);
-    border-left-color: palette(alt, fg);
+  form {
+    margin: 0;
 
-    &:first-child {
-      border-left: 0;
-    }
+    // Tighter gutter between fields than the theme's 1.5rem.
+    >.fields {
+      $gutter: 1rem;
+      width: calc(100% + #{$gutter * 2});
+      margin: ($gutter * -1) 0 1.25rem ($gutter * -1);
 
-    &.split {
-      @include vendor('display', 'flex');
-      @include vendor('flex-direction', 'column');
-      padding: 0;
+      >.field {
+        padding: $gutter 0 0 $gutter;
+        width: calc(100% - #{$gutter});
 
-      >section {
-        @include padding((size(padding) * 2) - 1, (size(padding) * 2));
-        border-top: solid 2px palette(alt, border);
-
-        &:first-child {
-          @include padding((size(padding) * 2) - 1, (size(padding) * 2), (size(padding), 0, 0, 0));
-          border-top: 0;
-        }
-
-        &:last-child {
-          @include padding((size(padding) * 2) - 1, (size(padding) * 2), (0, 0, size(padding), 0));
-        }
-      }
-
-      &.contact {
-
-        >section {
-          @include vendor('display', 'flex');
-          @include vendor('align-items', 'center');
-          padding: (size(padding) * 1.575) (size(padding) * 2);
-
-          >* {
-            margin-bottom: 0;
-          }
-
-          > :first-child {
-            @include vendor('flex-shrink', '0');
-            @include vendor('flex-grow', '0');
-            width: 8rem;
-          }
-
-          > :last-child {
-            @include vendor('flex-shrink', '1');
-            @include vendor('flex-grow', '1');
-          }
-
-          &:first-child {
-            padding: (size(padding) * 2) (size(padding) * 2) ((size(padding) * 2) - 1) (size(padding) * 2);
-          }
-
-          &:last-child {
-            padding: ((size(padding) * 2) - 1) (size(padding) * 2) (size(padding) * 2) (size(padding) * 2);
-          }
-
-          &.alt {
-            @include vendor('align-items', 'flex-start');
-
-            > :last-child {
-              margin-top: -0.325rem;
-            }
-          }
+        // Name and e-mail stay side by side, even on phones.
+        &.half {
+          width: calc(50% - #{$gutter * 0.5});
         }
       }
     }
   }
 
+  label {
+    margin-bottom: 0.4rem;
+  }
+
+  .actions {
+    margin-bottom: 0;
+  }
+
   label,
-  h3,
   a,
   input,
   textarea {
     color: palette(invert, border) !important;
+  }
+
+  // Single-line fields a notch lower than the theme's 3rem.
+  input[type="text"],
+  input[type="email"] {
+    height: 2.5rem;
   }
 
   input[type="submit"] {
@@ -118,129 +84,35 @@
     border-color: palette(alt, fg);
   }
 
-  form label,
-  h3,
-  p {
+  form label {
     font-size: 0.8rem;
   }
 
-  // Footer h3s ("Sociální sítě" etc.) are labels like the form labels beside
-  // them, so they keep spaced capitals while real headings use sentence case.
-  h3 {
-    font-weight: font(weight-label);
-    letter-spacing: font(letter-spacing-label);
-    text-transform: uppercase;
-  }
-
-  @include breakpoint('<=xlarge') {
-    padding-left: 7.5%;
-    padding-right: 7.5%;
-  }
-
-  @include breakpoint('<=large') {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-
-  @include breakpoint('<=medium') {
-    display: block;
-
-    >section {
-      border-top: solid 2px palette(alt, border);
-
-      &:first-child {
-        border-top: 0;
-      }
-
-      &.split {
-        >section {
-          @include padding((size(padding) * 2), (size(padding) * 2));
-
-          &:first-child {
-            @include padding((size(padding) * 2), (size(padding) * 2));
-          }
-
-          &:last-child {
-            @include padding((size(padding) * 2), (size(padding) * 2));
-          }
-        }
-
-        &.contact {
-          >section {
-            padding: (size(padding) * 2);
-
-            &:first-child {
-              padding: (size(padding) * 2);
-            }
-
-            &:last-child {
-              padding: (size(padding) * 2);
-            }
-          }
-        }
-      }
-    }
-
-    form label,
-    h3,
-    p {
-      font-size: 0.9rem;
-    }
-  }
-
   @include breakpoint('<=small') {
-    >section {
-      @include padding((size(padding) * 1), (size(padding) * 1));
-
-      &.split {
-        >section {
-          @include padding((size(padding) * 1), (size(padding) * 1));
-
-          &:first-child {
-            @include padding((size(padding) * 1), (size(padding) * 1));
-          }
-
-          &:last-child {
-            @include padding((size(padding) * 1), (size(padding) * 1));
-          }
-        }
-
-        &.contact {
-          >section {
-            padding: (size(padding) * 1);
-
-            &:first-child {
-              padding: (size(padding) * 1);
-            }
-
-            &:last-child {
-              padding: (size(padding) * 1);
-            }
-          }
-        }
-      }
-    }
+    padding: size(padding) (size(padding) * 0.75);
   }
 
-  @include breakpoint('<=xsmall') {
-    width: 100%;
+  @include breakpoint('<=xxsmall') {
+    form>.fields>.field.half {
+      width: calc(100% - 1rem);
+    }
   }
 }
+
+// Credits under the footer: one small, dim line in the body font,
+// rather than a row of bold spaced capitals.
 
 #copyright {
   @include color-typography(invert);
   position: relative;
-  color: color.adjust(palette(invert, fg), $alpha: -0.1);
+  color: color.adjust(palette(invert, fg), $alpha: -0.45);
   cursor: default;
-  font-family: font(family-heading);
-  font-size: 0.8rem;
-  font-weight: font(weight-label);
-  letter-spacing: font(letter-spacing-label);
-  line-height: 1.5;
+  font-family: font(family);
+  font-size: 0.75rem;
+  font-weight: font(weight);
+  line-height: 1.6;
   text-align: center;
-  text-transform: uppercase;
-  margin: (size(padding) * 2) auto (size(padding) * 4) auto;
+  margin: 1.25rem auto;
   width: calc(100% - #{size(padding) * 2});
   max-width: size(wrapper);
   z-index: 2;
@@ -248,6 +120,10 @@
   a {
     color: inherit;
     border-bottom-color: inherit;
+
+    &:hover {
+      color: palette(invert, fg) !important;
+    }
   }
 
   ul {
@@ -256,35 +132,24 @@
     padding-left: 0;
 
     li {
-      border-left: solid 2px;
       display: inline-block;
-      line-height: 1;
-      margin-left: 1rem;
-      padding-left: 1rem;
+      padding-left: 0;
 
-      &:first-child {
-        border-left: 0;
-        margin-left: 0;
-        padding-left: 0;
+      &:not(:first-child)::before {
+        content: '·';
+        margin: 0 0.6rem;
       }
     }
-  }
 
-  @include breakpoint('<=large') {
-    margin: (size(padding) * 2) auto;
-  }
+    // When the line wraps, a dot would start the next line; use gaps instead.
+    @include breakpoint('<=small') {
+      @include vendor('display', 'flex');
+      @include vendor('flex-wrap', 'wrap');
+      @include vendor('justify-content', 'center');
+      gap: 0 1.25rem;
 
-  @include breakpoint('<=xsmall') {
-    ul {
-      li {
-        border-left: 0;
-        margin: 1rem 0 0 0;
-        padding-left: 0;
-        display: block;
-
-        &:first-child {
-          margin-top: 0;
-        }
+      li:not(:first-child)::before {
+        content: none;
       }
     }
   }

@@ -1,17 +1,17 @@
-<!-- Footer -->
+<!-- Footer: just the contact form. Social links live in the nav bar. -->
 {{ $data := index hugo.Data .Site.Language.Lang }}
+{{ with $data.contactinfo.contactformaction }}
 <footer id="footer">
-  {{ with $data.contactinfo.contactformaction }}
   <section class="contact-form">
     <form method="post" action="{{ . }}">
       <div class="fields">
-        <div class="field">
+        <div class="field half">
           <label for="name">{{ i18n "CONTACT_FORM_FIELD_NAME" . }}</label>
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" autocomplete="name" />
         </div>
-        <div class="field">
+        <div class="field half">
           <label for="email">{{ i18n "CONTACT_FORM_FIELD_EMAIL" . }}</label>
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email" autocomplete="email" />
         </div>
         <div class="field">
           <label for="message">{{ i18n "CONTACT_FORM_FIELD_MESSAGE" . }}</label>
@@ -23,65 +23,5 @@
       </ul>
     </form>
   </section>
-  {{ end }}
-  <section class="split contact">
-    {{ with $data.contactinfo.address }}
-    <section class="alt">
-      <h3>{{ i18n "CONTACT_ADDRESS" . }}</h3>
-      <p>
-        {{ range $i, $e := . }}
-        {{ if $i }} <br /> {{ end }} {{ .line }}
-        {{ end }}
-      </p>
-    </section>
-    {{ end }}
-    {{ with $data.contactinfo.phone }}
-    <section>
-      <h3>{{ i18n "CONTACT_PHONE" . }}</h3>
-      <p><a href="tel:{{ . }}">{{ . }}</a></p>
-    </section>
-    {{ end }}
-    {{ with $data.contactinfo.email }}
-    <section>
-      <h3>{{ i18n "CONTACT_EMAIL" . }}</h3>
-      <p><a href="mailto:{{ . }}">{{ . }}</a></p>
-    </section>
-    {{ end }}
-    {{ with $data.social }}
-    <section>
-      <h3>{{ i18n "CONTACT_SOCIAL" . }}</h3>
-      <ul class="icons alt">
-        {{ with .twitter}}
-        <li><a href="{{ . }}" target="_blank" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
-        {{ end }}
-        {{ with .facebook}}
-        <li><a href="{{ . }}" target="_blank" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
-        {{ end }}
-        {{ with .instagram}}
-        <li><a href="{{ . }}" target="_blank" class="icon alt fa-instagram"><span class="label">Instagram</span></a>
-        </li>
-        {{ end }}
-        {{ with .linkedin}}
-        <li><a href="{{ . }}" target="_blank" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-        {{ end }}
-        {{ with .github}}
-        <li><a href="{{ . }}" target="_blank" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
-        {{ end }}
-        {{ with .youtube}}
-        <li><a href="{{ . }}" target="_blank" class="icon alt fa-youtube"><span class="label">Youtube</span></a></li>
-        {{ end }}
-        {{ with .googleplus}}
-        <li><a href="{{ . }}" target="_blank" class="icon alt fa-google-plus"><span class="label">Google Plus</span></a>
-        </li>
-        {{ end }}
-        {{ with .lastfm}}
-        <li><a href="{{ . }}" target="_blank" class="icon alt fa-lastfm"><span class="label">Last.fm</span></a></li>
-        {{ end }}
-        {{ with .flickr}}
-        <li><a href="{{ . }}" target="_blank" class="icon alt fa-flickr"><span class="label">Flickr</span></a></li>
-        {{ end }}
-      </ul>
-    </section>
-    {{ end }}
-  </section>
 </footer>
+{{ end }}
