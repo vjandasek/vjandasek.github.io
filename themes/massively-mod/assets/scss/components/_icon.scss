@@ -6,6 +6,39 @@
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
+// Icon font: Font Awesome Free 7 (font SIL OFL 1.1, icons CC BY 4.0; see
+// static/assets/fonts/LICENSE-font-awesome.txt), cut down to the 14 icons the
+// site uses and self-hosted: the social icons below plus check, close, bars and
+// angle-left/right, which the SCSS references by code point (\f00c, \f00d,
+// \f0c9, \f104, \f105). Brands and Solid are merged into one 2 KB file.
+// Rebuild (or add an icon) with fonts-src/build-icon-font.sh.
+
+@font-face {
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: url('../fonts/fa-icons.woff2') format('woff2');
+}
+
+$brand-icons: (
+  'twitter': '\f099',
+  'facebook': '\f39e', // facebook-f
+  'instagram': '\f16d',
+  'linkedin': '\f0e1',
+  'github': '\f09b',
+  'youtube': '\f167',
+  'google-plus': '\f0d5',
+  'lastfm': '\f202',
+  'flickr': '\f16e',
+);
+
+@each $name, $code in $brand-icons {
+  .fa-#{$name}:before {
+    content: $code;
+  }
+}
+
 /* Icon */
 
 .icon {
