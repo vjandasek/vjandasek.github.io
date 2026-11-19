@@ -1,7 +1,18 @@
+{{- /*
+  Tag cloud on /blog/. Each tag's size follows how many posts carry it
+  (1rem for one post, up to 1.75rem for the most used), so tags with the
+  same count look the same. Names come from the term pages, which keep the
+  front-matter casing ("Itálie", "léto"); .Term would be lowercased.
+*/ -}}
+{{ $tags := (index .Site.Taxonomies "tags").ByCount }}
+{{ with $tags }}
+{{ $max := (index . 0).Count }}
 <ul id="taxonomylist">
-<li>Kategorie</li>
-{{ range (index .Site.Taxonomies "tags").ByCount }}
-  <li><a href="/tags/{{ urlize .Term }}">{{ .Term }}</a></li>
-  {{/*  ({{ (len .Pages) }})  */}}
+<li>Štítky</li>
+{{ range . }}
+  {{ $size := 1.0 }}
+  {{ if gt $max 1 }}{{ $size = add 1.0 (mul 0.75 (div (float (sub .Count 1)) (float (sub $max 1)))) }}{{ end }}
+  <li style="font-size: {{ printf "%.2f" $size }}rem"><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a></li>
 {{ end }}
 </ul>
+{{ end }}

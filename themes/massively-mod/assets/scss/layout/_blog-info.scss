@@ -1,5 +1,7 @@
 @use '../libs' as *;
 
+// Tags and date under a post title. Light enough to read on the dark
+// background (the old #717981 was about 3:1), still quieter than the text.
 .blog-info {
   @include vendor('display', 'flex');
   @include vendor('flex-grow', '1');
@@ -7,7 +9,7 @@
 
   list-style: none;
   margin-bottom: 0;
-  color: palette(alt, fg);
+  color: rgba(#ffffff, 0.7);
 
   ul {
     @include vendor('display', 'flex');
@@ -20,10 +22,10 @@
       display: block;
       padding: 0 0.4rem;
       font-family: font(family-heading);
-      font-weight: font(weight);
+      font-weight: font(weight-heading);
 
       a {
-        color: palette(alt, fg) !important;
+        color: rgba(#ffffff, 0.85) !important;
       }
     }
   }

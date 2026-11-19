@@ -1,5 +1,5 @@
 ---
-title: "Itálie 2023 - La Spezia, Cinque Terre"
+title: "Itálie 2023 – La Spezia, Cinque Terre"
 description: "Cinque Terre pěšky i z lodi: pět barevných městeček na strmých březích moře, k tomu Portovenere a noční vlak z Vídně až k moři. Verdikt 13/10."
 date: 2024-03-25T09:00:00+01:00
 build:

@@ -1,5 +1,5 @@
 ---
-title: "Itálie 2023 - Florencie, Bologna"
+title: "Itálie 2023 – Florencie, Bologna"
 description: "Začátek naší nejhezčí italské dovolené: Florencie s Ponte Vecchio a nedokončenou katedrálou, k tomu klidnější Bologna s podloubími a věží Asinelli."
 date: 2024-03-10T20:00:00+01:00
 build:

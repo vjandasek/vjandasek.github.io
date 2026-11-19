@@ -1,5 +1,5 @@
 ---
-title: "Itálie 2023 - Siena, San Gimignano, Pisa"
+title: "Itálie 2023 – Siena, San Gimignano, Pisa"
 description: "Středověká Siena, kamenné věže San Gimignana, toskánské kopečky na elektrokolech a bohužel i Pisa."
 date: 2024-03-15T20:00:00+01:00
 build:
