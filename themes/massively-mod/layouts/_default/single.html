@@ -17,7 +17,11 @@
             {{ end }}
             {{ partial "blog-info" . }}
           </header>
-          {{ .Content }}
+          {{- /* The image-gal-start/-end shortcodes leave a gallery (or several
+               stacked ones) inside a Markdown paragraph: <p><ul class=image-gallery>…</ul></p>,
+               which is invalid HTML; browsers then leave an empty <p> behind.
+               Unwrap galleries that fill a paragraph on their own. */}}
+          {{ .Content | replaceRE `<p>(\s*(?:<ul class="image-gallery[\s\S]*?</ul>\s*)+)</p>` "$1" | safeHTML }}
           {{ partial "postcustom" . }}
 
         </section>

@@ -69,3 +69,26 @@
   --columns: 1fr;
   grid-template-columns: var(--columns);
 }
+// Blog posts: spacing around galleries. Galleries used to sit inside Markdown
+// paragraphs, and the empty <p>s browsers left around them supplied this
+// spacing. single.html now unwraps them, so the same spacing is set here:
+// 1rem below a run of galleries (and above one that opens the post), 3rem
+// below the run that ends the post, and the post's last paragraph keeps its
+// normal 1rem when galleries still follow it.
+#main .blog-content .post {
+  > header + .image-gallery {
+    margin-top: 1rem;
+  }
+
+  > .image-gallery:has(+ :not(.image-gallery)) {
+    margin-bottom: 1rem;
+  }
+
+  > .image-gallery:last-child {
+    margin-bottom: 3rem;
+  }
+
+  > p:last-of-type:has(~ .image-gallery) {
+    margin-bottom: 1rem;
+  }
+}
