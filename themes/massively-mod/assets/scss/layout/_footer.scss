@@ -101,20 +101,27 @@
 
 // Credits under the footer: one small, dim line in the body font,
 // rather than a row of bold spaced capitals.
+// A full-width solid band: without a background it showed whichever part
+// of the fixed background photo was at the bottom of the window (water,
+// a corner of the signature), so it changed with window size and page.
+// The colour is wrapper-bg under the photo's 10% darkening, i.e. what the
+// band already looked like wherever the photo didn't reach.
 
 #copyright {
   @include color-typography(invert);
   position: relative;
   color: color.adjust(palette(invert, fg), $alpha: -0.45);
+  background-color: color.mix(#000000, palette(wrapper-bg), 10%);
   cursor: default;
   font-family: font(family);
   font-size: 0.75rem;
   font-weight: font(weight);
   line-height: 1.6;
   text-align: center;
-  margin: 1.25rem auto;
-  width: calc(100% - #{size(padding) * 2});
-  max-width: size(wrapper);
+  margin: 0;
+  padding: 1.25rem size(padding);
+  width: 100%;
+  max-width: none;
   z-index: 2;
 
   a {
