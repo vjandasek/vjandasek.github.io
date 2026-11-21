@@ -1,20 +1,21 @@
-<ul class="image-gallery">
+<ul class="image-gallery image-gallery-rows">
   {{ $resources := .context.Resources }}
-  {{/* Thumbnails are name.thu.ext (any extra dots in name are fine); the full photo is name.ext */}}
+  {{/* Each name.thu.ext (any extra dots in name are fine) marks a photo for the gallery; the
+       full photo name.ext is shown at its natural aspect ratio in justified rows (--r feeds
+       _imagegallery.scss and gallery-rows.js). The square .thu crops themselves aren't shown here. */}}
   {{ range $resources.ByType "image" }}
     {{ if findRE `\.thu\.[^./]+$` .Name }}
-      <li>
-        {{ $fullName := replaceRE `\.thu(\.[^./]+)$` "$1" .Name }}
-        {{ $fullres := $resources.GetMatch $fullName }}
-        {{ if not $fullres }}
-          {{ warnf "image-gallery: %s has no full-size %s in %s, linking the thumbnail instead" .Name $fullName $.context.File.Path }}
-          {{ $fullres = . }}
-        {{ end }}
+      {{ $fullName := replaceRE `\.thu(\.[^./]+)$` "$1" .Name }}
+      {{ $fullres := $resources.GetMatch $fullName }}
+      {{ if not $fullres }}
+        {{ warnf "image-gallery: %s has no full-size %s in %s, using the thumbnail instead" .Name $fullName $.context.File.Path }}
+        {{ $fullres = . }}
+      {{ end }}
+      {{ $img := $fullres.Fit `1400x800 q75 webp` }}
+      {{ $r := div (float $img.Width) $img.Height }}
+      <li style="--r: {{ printf "%.4f" $r }}">
         <a href="{{ ($fullres.Fit `1920x1920 q75 webp`).Permalink }}" data-lightbox="gal">
-          {{/* Hand-made 800 px thumbnails become WebP q65; older 400 px ones stay JPEG q100 until re-exported */}}
-          {{ $thumb := .Fit `400x400 q100` }}
-          {{ if ge .Width 800 }}{{ $thumb = .Fit `800x800 q65 webp` }}{{ end }}
-          <img src="{{ $thumb.Permalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $.context.Title }}" loading="lazy">
+          <img src="{{ $img.Permalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $.context.Title }}" loading="lazy">
         </a>
       </li>
     {{ end }}

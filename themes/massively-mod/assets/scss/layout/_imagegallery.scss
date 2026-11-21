@@ -92,3 +92,49 @@
     margin-bottom: 1rem;
   }
 }
+
+// Gallery pages: justified rows at natural aspect ratios. Each item grows in
+// proportion to its aspect ratio, so every photo in a row ends up the same
+// height; the filler after the last item stops a short last row stretching.
+.image-gallery.image-gallery-rows {
+  --row: 240px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  @include breakpoint('<=medium') {
+    --row: 200px;
+  }
+
+  // Phones: rows hold one or two photos, so the last row is justified like
+  // the rest (no filler), and a photo alone at the end gets the full width.
+  @include breakpoint('<=small') {
+    --row: 150px;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &::after {
+    content: '';
+    flex-grow: 999999;
+  }
+
+  // gallery-rows.js has set every photo's width: no filler needed
+  &.is-balanced::after {
+    display: none;
+  }
+
+  li {
+    flex-grow: calc(var(--r) * 100);
+    flex-basis: calc(var(--r) * var(--row));
+
+    img {
+      display: block;
+      aspect-ratio: var(--r);
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}

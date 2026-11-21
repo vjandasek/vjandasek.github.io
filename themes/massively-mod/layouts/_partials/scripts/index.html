@@ -6,8 +6,9 @@
 {{ $util := resources.Get "js/util.min.js" }}
 {{ $main := resources.Get "js/main.js" | minify }}
 {{ $lightbox := resources.Get "js/lightbox.min.js" }}
+{{ $rows := resources.Get "js/gallery-rows.js" | minify }}
 
-{{ $js := slice $jQuery $scrollex $scrolly $browser $breakpoints $util $main $lightbox | resources.Concat
+{{ $js := slice $jQuery $scrollex $scrolly $browser $breakpoints $util $main $lightbox $rows | resources.Concat
 "assets/js/bundle.js" }}
 
 <!-- Scripts -->
