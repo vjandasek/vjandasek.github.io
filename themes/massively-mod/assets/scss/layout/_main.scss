@@ -224,6 +224,25 @@
         margin-left: auto;
         margin-right: auto;
       }
+
+      // Post header: title, italic lead (front-matter description), tags.
+      // The lead sits under the title like a subtitle. The theme put 4rem
+      // under every major h1, and the lead caught `#main p:last-of-type`
+      // (3rem, meant for a post's last paragraph), which spread the header
+      // over a screen's height on phones.
+      >header.major {
+        >h1 {
+          margin-bottom: 1.25rem !important;
+        }
+
+        // Same measure as the body text, and the body's line height rather
+        // than the theme's double spacing for h1 + p.
+        >p {
+          max-width: 39.375rem;
+          margin: 0 auto 1.5rem;
+          line-height: 1.75;
+        }
+      }
     }
   }
 
