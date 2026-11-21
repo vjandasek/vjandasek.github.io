@@ -41,14 +41,14 @@ No tests or linters; verify changes by building and looking at the pages.
 - `data/cs/*.yaml` — nav menu, intro text, social links, contact info.
 - `i18n/cs.toml` — UI strings.
 - `content/` — every page is a **page bundle** (`index.md` + images alongside or in `images/`).
-  - Gallery sections (`transport`, `wildlife`, `landscape`, `cityscape`, `analog`) use `layout: "single_photos"`, which auto-renders every `*.thu.*` resource as a thumbnail linked to its full-size sibling.
+  - Gallery sections (`transport`, `wildlife`, `landscape`, `cityscape`, `analog`) use `layout: "single_photos"`, which shows every photo in the bundle at its natural aspect ratio in justified rows (`_partials/image-gallery.html` + `assets/js/gallery-rows.js`, CSS-only greedy fallback without JS), each linked to the lightbox. Gallery photos have **no thumbnails**: just drop `foo.jpg` in the bundle.
   - Blog posts live in `content/blog/<slug>/index.md` with `image:` (cover), `tags:`, and images in `images/`.
   - Pages set `_build: publishResources: false` so only Hugo-processed images are published, never raw files.
 
 ## Image conventions
 
-- Every photo `foo.jpg` needs a hand-made thumbnail `foo.thu.jpg` next to it (often a deliberate crop). Without it, `image-entry` warns and scales the full image instead (a safety net, not a substitute); a misspelt `src=` fails the build with a clear error. The gallery partial pairs `name.thu.ext` with `name.ext` (extra dots in `name` are fine) and warns about a thumbnail with no full-size photo.
-  - Gallery-section thumbnails should be exported at **800×800**: those become WebP q65. Older 400 px ones still render as JPEG q100 (and look soft, since the grid cells are 280–560 CSS px wide). Don't auto-crop thumbnails from the full image: the full-size photos carry a signature that the hand-made crops leave out.
+- Every **blog** photo `foo.jpg` needs a hand-made thumbnail `foo.thu.jpg` next to it (often a deliberate crop). Without it, `image-entry` warns and scales the full image instead (a safety net, not a substitute); a misspelt `src=` fails the build with a clear error. The gallery partial skips any `*.thu.*` file.
+  - Gallery-section photos are shown whole (Fit 1400x800 q75 WebP), signature included. The square hand-made gallery thumbnails were deleted on 2026-11-21 (in git history before that date if an overview ever needs them).
 - Full-size images are exported at roughly 1800–1920 px and re-processed by Hugo (`Fit 1920x1920 q75 webp`). Blog thumbnails and covers are WebP q75 too.
 - Vít judges image quality by eye: any change to formats or quality needs a side-by-side visual comparison first, not just byte counts.
 - Zoner Photo Studio leaves `*.data-zps` sidecar files — don't commit them.
