@@ -9,7 +9,7 @@
   {{- end }}
   {{- $postsFeaturedPostEnabled := .Store.Get "postsFeaturedPostEnabled" }}
 
-  {{- $posts := .Data.Pages }}
+  {{- $posts := .Pages }}
 
   {{- $firstPost := first 1 $posts }}
 
@@ -24,13 +24,20 @@
 
   <!-- Wrapper -->
   <div id="wrapper" class="fade-in" data-ps="{{ $postsPageSize }}" data-pfp="{{ $postsFeaturedPostEnabled }}">
+
     {{- partial "header" . -}}
     {{- partial "nav" . }}
 
     <!-- Main -->
     <div id="main">
       <div class="content">
-        <h1>{{ .Data.Term }}</h1>
+
+        <ul>
+          {{ range .Data.Term }}
+          <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+          {{ end }}
+        </ul>
+
 
         {{- if (eq $postsFeaturedPostEnabled true) }}
         {{- partial "posts/featured.html" (dict "firstpost" $firstPost "siteData" (index hugo.Data

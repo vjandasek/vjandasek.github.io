@@ -10,7 +10,7 @@
   {{- end }}
   {{- $postsFeaturedPostEnabled := .Store.Get "postsFeaturedPostEnabled" }}
 
-  {{- $posts := where .Data.Pages "Section" .Section }}
+  {{- $posts := where .Pages "Section" .Section }}
 
   {{- $firstPost := first 1 $posts }}
 

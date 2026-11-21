@@ -8,18 +8,19 @@ Live at https://vjandasek.cz (custom domain on GitHub Pages; `vjandasek.github.i
 - **Hugo** — CI pins `HUGO_VERSION` and `DART_SASS_VERSION` in `.github/workflows/hugo.yaml`. Keep the local versions the same as CI (local Hugo comes from `go install`; the Ubuntu apt package is far older).
 - **Dart Sass** — required: Hugo 0.170 dropped LibSass and calls an external `sass` binary. Locally it lives in `~/.local/dart-sass` (on PATH via `~/.bashrc`). The npm `sass` and Ruby Sass don't work with Hugo.
 - **Theme**: `themes/massively-mod/` — an in-repo, heavily modified fork of the Hugo port of HTML5 UP "Massively". Not a submodule; edit it directly.
-  - SCSS compiled by Hugo (`css.Sass`, Dart Sass) from `assets/scss/main.scss` and `noscript.scss`, in `layouts/partials/htmlhead.html`. The build is warning-free; keep it that way.
+  - Layouts use Hugo's 0.146+ template system: page templates sit at the top of `layouts/` (`home.html`, `single.html`, `single_photos.html`, `taxonomy.html`, `term.html`, `404.html`) plus `blog/section.html`; partials in `_partials/`, shortcodes in `_shortcodes/`. No `_default/` folder.
+  - SCSS compiled by Hugo (`css.Sass`, Dart Sass) from `assets/scss/main.scss` and `noscript.scss`, in `layouts/_partials/htmlhead.html`. The build is warning-free; keep it that way.
   - Uses the Sass **module system** (`@use`/`@forward`, no Sass `@import`). Partials load helpers with `@use '../libs' as *;` (`libs/_index.scss` forwards all of libs/). A layout file that borrows a `color-*` mixin must `@use` the partial that defines it.
   - Helper functions are `palette()`, `size()`, `font()`, `duration()`, `misc()` — no leading underscore (that would make them module-private).
   - Breakpoints are the default `$breakpoints` in `libs/_breakpoints.scss`.
   - Site config reaches Sass via `css.Sass` `vars` → `@use "hugo:vars"` (e.g. `backgroundPath` in `hugotheme/main.scss`). Don't put Go template syntax in SCSS files.
   - Many theme files use CRLF line endings; keep each file's existing style.
   - Palette mixes that land on fractional colour channels are written out as literal hex in `libs/_vars.scss`, so Dart Sass output matches the old LibSass output.
-  - JS: jQuery 3.7.1 + HTML5 UP helpers + lightbox2, concatenated in `layouts/partials/scripts/index.html`.
+  - JS: jQuery 3.7.1 + HTML5 UP helpers + lightbox2, concatenated in `layouts/_partials/scripts/index.html`.
   - Icons: a self-hosted 2 KB cut of Font Awesome Free 7 (`static/assets/fonts/fa-icons.woff2`, rules in `components/_icon.scss`) under the old FA4 class names and code points. To add an icon, edit and run `fonts-src/build-icon-font.sh` (in the theme); no FA kit or CDN.
 - **Pagefind** for search — pinned in `package.json`/`package-lock.json` (its only dependency; run `npm ci` once to install). Runs in CI after the Hugo build (`npx pagefind --site public`). Search UI lives in `layouts/blog/section.html`; it won't work under plain `hugo server`.
-- **GoatCounter** analytics in `layouts/partials/htmlhead-custom.html`. Don't put extra dots in template names: Hugo ≥0.146 treats `name.variant.html` as a variant of `name.html`.
-- Post-list teasers come from `layouts/partials/posts/summary.html` (plain text, first 50 words to end of sentence), not `.Summary`, which since Hugo 0.134 drags in gallery HTML.
+- **GoatCounter** analytics in `layouts/_partials/htmlhead-custom.html`. Don't put extra dots in template names: Hugo ≥0.146 treats `name.variant.html` as a variant of `name.html`.
+- Post-list teasers come from `layouts/_partials/posts/summary.html` (plain text, first 50 words to end of sentence), not `.Summary`, which since Hugo 0.134 drags in gallery HTML.
 - Contact form posts to **Formspree** (`data/cs/contactinfo.yaml`).
 - Deploy: push to `master` → GitHub Actions builds and deploys to Pages.
 

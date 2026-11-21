@@ -1,6 +1,6 @@
 @use '../libs' as *;
 
-// Tag cloud on /blog/. Font sizes are set per tag in partials/taxonomylist.html
+// Tag cloud on /blog/. Font sizes are set per tag in _partials/taxonomylist.html
 // (by post count), so only the heading and spacing live here.
 ul#taxonomylist {
   list-style: none;
