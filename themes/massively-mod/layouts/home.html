@@ -10,8 +10,6 @@
     <div id="main" data-pagefind-body>
       <div class="content">
         {{ .Content }}
-        {{- $paginator := .Paginator }}
-        {{- $outer := . }}
       </div>
     </div>
     {{- partial "footer/index" . }}

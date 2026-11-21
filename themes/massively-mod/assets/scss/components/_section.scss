@@ -179,6 +179,18 @@ header {
   display: none;
 }
 
+// Search hits: brighter, semibold text with a thin accent underline, instead of
+// the browser's default yellow <mark> block, which glared on the dark background
+.pagefind-ui__result-excerpt.svelte-j9e30 mark {
+  background: none;
+  color: palette(invert, fg);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: palette(accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
 @mixin color-section($p: null) {
   header {
     &.major {
