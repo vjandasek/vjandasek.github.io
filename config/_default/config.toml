@@ -4,6 +4,7 @@ title = 'vjandasek'
 theme = 'massively-mod'
 defaultContentLanguage = 'cs'
 capitalizeListTitles = false
+disableKinds = ['taxonomy']  # no /tags/ overview page; see [taxonomies]
 
 [params]
   # set below parameter to define a favicon
@@ -31,5 +32,7 @@ capitalizeListTitles = false
   homeTitle = 'Úvod'
 
 # Only tags are used; Hugo's default 'categories' taxonomy is switched off
+# Each tag has its own page (/tags/<tag>/), but there's no /tags/ overview:
+# the tag cloud on /blog/ is the overview (disableKinds at the top).
 [taxonomies]
   tag = 'tags'
